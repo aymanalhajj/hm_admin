@@ -2,21 +2,42 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .serializer import *
+from geo_location.models import GeoLocation
 from .models import *
 
 
 
 @api_view(['POST'])
 def create_organization(request):
-    print("create organizations")
     serializer = OrganizationSerialzer(data = request.data)
     if serializer.is_valid():
-        serializer.save()
+        org = serializer.save()
         print("create organizations")
-        return Response({'status':'succeed', 'message': 'organization_created_successfully'})
+        return Response({'status':'succeed', 'message': 'organization_created_successfully',"data":org.id})
     else:
+        return Response({'status':'failed','errors': serializer.errors})
+
+@api_view(['POST'])
+def create_organization_with_location(request):
+    serializer = OrganizationWithLocationSerialzer(data = request.data)
+    if serializer.is_valid():
+        data = serializer.validated_data
+        print(data)
+        organization = Organization.objects.create(name = data.get("name"),
+                                                   org_type= data.get("org_type"),
+                                                   order_status=data.get("order_status"),
+                                                   note=data.get("note"),
+                                                   expected_date=data.get("expected_date"))
         
-        print(serializer.errors)
+        geo_location = GeoLocation.objects.create(longitude = data.get("longitude"),
+                                                  latitude= data.get("latitude"),
+                                                  country_name=data.get("country_name"),
+                                                  locality=data.get("locality"),
+                                                  address=data.get("address"),
+                                                  organization=organization)
+        return Response({'status':'succeed', 'message':'organization_created_successfully',"data": organization.id})
+    else:
+        print({'status':'failed','errors': serializer.errors})
         return Response({'status':'failed','errors': serializer.errors})
 
 
@@ -40,9 +61,13 @@ def create_organization_service(request):
         print(serializer.errors)
         return Response({'status':'failed','errors': serializer.errors})
 
+from custom_auth.models import JWTAuthentication
 
 @api_view(['GET']) 
 def get_organizations_all(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        return Response(auth_status,401)
     objects = Organization.objects.all()
     serializer = ComplexOrganizationSerialzer(objects, many = True)
     return Response(serializer.data)

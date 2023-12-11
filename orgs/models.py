@@ -1,6 +1,4 @@
 from django.db import models
-from geo_location.models import GeoLocation
-
 
 ORG_TYPE = (
     ('1','برج'),

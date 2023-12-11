@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import *
+from geo_location.serializer import GeoLocationSerializer
 
 class OrganizationEmployeeSerialzer(serializers.ModelSerializer):
     class Meta:
@@ -29,6 +30,13 @@ class OrganizationSerialzer(serializers.ModelSerializer):
     class Meta:
         model = Organization
         fields = "__all__"
+
+class OrganizationWithLocationSerialzer(serializers.Serializer):
+    organization = OrganizationSerialzer(source = "*")
+    geo_location = GeoLocationSerializer(source = "*")
+    class Meta:
+        # model = Organization
+        fields = ('organization','geo_location')
 
 class ComplexOrganizationSerialzer(serializers.ModelSerializer):
     # organizationemployee_set = ComplexOrganizationEmployeeSerialzer(many = True)

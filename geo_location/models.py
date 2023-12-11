@@ -8,4 +8,4 @@ class GeoLocation(models.Model):
     country_name = models.CharField(max_length=100,verbose_name="الدولة")
     locality = models.CharField(max_length=200,verbose_name="المنطقة")
     address = models.CharField(max_length=1000,verbose_name="العنوان")
-    organization = models.ForeignKey(Organization, on_delete=models.DO_NOTHING)
+    organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True)

@@ -6,3 +6,6 @@ class UserAccountSerializer(serializers.ModelSerializer):
         model=UserAccount
         fields= '__all__'
 
+class ObtainTokenSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField()

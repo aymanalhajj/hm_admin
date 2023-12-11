@@ -9,7 +9,7 @@ class UserAccountAdmin(admin.ModelAdmin):
 
 
 class UserTypeAdmin(admin.ModelAdmin):    
-    list_display = ("id",'name')
+    list_display = ("id",'name',)
     list_filter =  ("id",'name')
     search_fields =  ("id",'name')
 

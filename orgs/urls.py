@@ -3,7 +3,7 @@ from django.urls import path,include
 from . import views
 
 urlpatterns= [
-    path('create-organization', views.create_organization),
+    path('create-organization', views.create_organization_with_location),
     path('create-org-emp', views.create_organization_emp),
     path('create-org-service', views.create_organization_service),
     path('get-organizations', views.get_organizations_all),
