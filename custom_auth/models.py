@@ -11,27 +11,36 @@ from rest_framework.exceptions import AuthenticationFailed, ParseError
 # User = get_user_model()
 
 
+from django.utils.translation import gettext_lazy as _
 
 class UserType(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100,verbose_name=_('user type name'))
     def __str__(self) -> str:
         return self.name
+    class Meta:
+        managed = True
+        verbose_name = _('User Type')
+        verbose_name_plural = _('User Type')
 
 class UserAccount(models.Model):
-    first_name = models.CharField(max_length=100)
-    second_name = models.CharField(max_length=100)
-    third_name = models.CharField(max_length=100)
-    fourth_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    mobile = models.CharField(max_length=100)
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
-    type = models.ForeignKey(UserType, on_delete=models.DO_NOTHING)
+    first_name = models.CharField(max_length=100,verbose_name=_('first name'))
+    second_name = models.CharField(max_length=100,verbose_name=_('second name'))
+    third_name = models.CharField(max_length=100,verbose_name=_('third name'))
+    fourth_name = models.CharField(max_length=100,verbose_name=_('fourth name'))
+    last_name = models.CharField(max_length=100,verbose_name=_('last name'))
+    email = models.CharField(max_length=100,verbose_name=_('email'))
+    mobile = models.CharField(max_length=100,verbose_name=_('mobile'))
+    username = models.CharField(max_length=100,verbose_name=_('username'))
+    password = models.CharField(max_length=100,verbose_name=_('password'))
+    type = models.ForeignKey(UserType, on_delete=models.DO_NOTHING,verbose_name=_('user type'))
 
     def check_password(self,pwd):
         user = UserAccount.objects.filter(username = self.username, password = pwd).first()
         return user
+    class Meta:
+        managed = True
+        verbose_name = _('User Account')
+        verbose_name_plural = _('User Account')
 
 
 

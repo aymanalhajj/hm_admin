@@ -1,0 +1,44 @@
+{% extends 'admin/base.html' %} 
+{% block extrahead %}
+{{ block.super }}
+<style>
+  :root {
+    --primary: #DBB24F;
+    --secondary: #5e9cd3;
+    --accent: black;
+  }
+</style>
+
+<style>
+  .myTable , .myTable th, .myTable td {
+    border: 1px solid black;
+  }
+  .myTable{
+    margin: 2px;
+  }
+  .myTable th,.myTable td {
+    padding: 4px;
+    text-align: center;
+  }
+  
+  .myTable tr:hover {background-color: #D6EEEE;}
+  
+  </style>
+{% endblock %}
+{% load i18n %}
+{% block userlinks %}
+{{ block.super }}
+/ <form action="{% url 'set_language' %}" method="post" style="display:inline">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}">
+    <select name="language" onchange="this.form.submit()">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+    </select>
+</form>
+{% endblock %}

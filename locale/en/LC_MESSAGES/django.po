@@ -1,0 +1,225 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-12 08:21+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\custom_auth\apps.py:8
+#, fuzzy
+#| msgid "username"
+msgid "user"
+msgstr "username"
+
+#: .\custom_auth\apps.py:9
+#, fuzzy
+#| msgid "username"
+msgid "users"
+msgstr "username"
+
+#: .\custom_auth\models.py:17
+msgid "user type name"
+msgstr "user type name"
+
+#: .\custom_auth\models.py:22 .\custom_auth\models.py:23
+#, fuzzy
+#| msgid "user type"
+msgid "User Type"
+msgstr "user type"
+
+#: .\custom_auth\models.py:26
+msgid "first name"
+msgstr "first name"
+
+#: .\custom_auth\models.py:27
+msgid "second name"
+msgstr "second name"
+
+#: .\custom_auth\models.py:28
+msgid "third name"
+msgstr "third name"
+
+#: .\custom_auth\models.py:29
+msgid "fourth name"
+msgstr "fourth name"
+
+#: .\custom_auth\models.py:30
+msgid "last name"
+msgstr "last name"
+
+#: .\custom_auth\models.py:31
+msgid "email"
+msgstr "email"
+
+#: .\custom_auth\models.py:32
+msgid "mobile"
+msgstr "mobile"
+
+#: .\custom_auth\models.py:33
+msgid "username"
+msgstr "username"
+
+#: .\custom_auth\models.py:34
+msgid "password"
+msgstr "password"
+
+#: .\custom_auth\models.py:35
+msgid "user type"
+msgstr "user type"
+
+#: .\custom_auth\models.py:42 .\custom_auth\models.py:43
+msgid "User Account"
+msgstr ""
+
+#: .\geo_location\models.py:15 .\geo_location\models.py:16
+msgid "Geo Location"
+msgstr ""
+
+#: .\hm_admin\settings.py:80
+msgid "Arabic"
+msgstr "Arabic"
+
+#: .\hm_admin\settings.py:81
+msgid "English"
+msgstr "English"
+
+#: .\orgs\apps.py:8 .\orgs\apps.py:9
+msgid "organizations"
+msgstr "organizations"
+
+#: .\orgs\models.py:36 .\orgs\models.py:45 .\orgs\models.py:54
+#: .\orgs\models.py:63 .\orgs\models.py:72 .\orgs\models.py:84
+#: .\orgs\models.py:122
+msgid "name"
+msgstr "name"
+
+#: .\orgs\models.py:41 .\orgs\models.py:42
+msgid "Organization Type"
+msgstr "Organization Type"
+
+#: .\orgs\models.py:50
+#, fuzzy
+#| msgid "order status"
+msgid "Order Status"
+msgstr "order status"
+
+#: .\orgs\models.py:51
+#, fuzzy
+#| msgid "order status"
+msgid "Order Statuses"
+msgstr "order status"
+
+#: .\orgs\models.py:59 .\orgs\models.py:60
+#, fuzzy
+#| msgid "employee role"
+msgid "Employee Role"
+msgstr "employee role"
+
+#: .\orgs\models.py:68 .\orgs\models.py:69
+#, fuzzy
+#| msgid "service type"
+msgid "Service Type"
+msgstr "service type"
+
+#: .\orgs\models.py:77 .\orgs\models.py:78
+#, fuzzy
+#| msgid "service section"
+msgid "Service Section"
+msgstr "service section"
+
+#: .\orgs\models.py:85
+msgid "organization type"
+msgstr "organization type"
+
+#: .\orgs\models.py:86
+msgid "order status"
+msgstr "order status"
+
+#: .\orgs\models.py:87
+msgid "note"
+msgstr "note"
+
+#: .\orgs\models.py:88
+msgid "expected date"
+msgstr "expected date"
+
+#: .\orgs\models.py:99
+#, fuzzy
+#| msgid "Organization Type"
+msgid "organization employees"
+msgstr "Organization Type"
+
+#: .\orgs\models.py:112
+#, fuzzy
+#| msgid "Organization Type"
+msgid "organization services"
+msgstr "Organization Type"
+
+#: .\orgs\models.py:118
+#, fuzzy
+#| msgid "organization"
+msgid "Organization"
+msgstr "organization"
+
+#: .\orgs\models.py:119
+#, fuzzy
+#| msgid "organizations"
+msgid "Organizations"
+msgstr "organizations"
+
+#: .\orgs\models.py:123
+msgid "employee role"
+msgstr "employee role"
+
+#: .\orgs\models.py:124
+msgid "mobile number"
+msgstr "mobile number"
+
+#: .\orgs\models.py:125 .\orgs\models.py:136
+msgid "organization"
+msgstr "organization"
+
+#: .\orgs\models.py:130
+#, fuzzy
+#| msgid "Organization Type"
+msgid "Organization Employee"
+msgstr "Organization Type"
+
+#: .\orgs\models.py:131
+#, fuzzy
+#| msgid "Organization Type"
+msgid "Organization Employees"
+msgstr "Organization Type"
+
+#: .\orgs\models.py:134
+msgid "service section"
+msgstr "service section"
+
+#: .\orgs\models.py:135
+msgid "service type"
+msgstr "service type"
+
+#: .\orgs\models.py:139
+#, fuzzy
+#| msgid "Organization Type"
+msgid "Organization Service"
+msgstr "Organization Type"
+
+#: .\orgs\models.py:140
+#, fuzzy
+#| msgid "Organization Type"
+msgid "Organization Services"
+msgstr "Organization Type"

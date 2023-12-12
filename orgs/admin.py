@@ -47,12 +47,19 @@ class OrganizationEmployeeAdmin(admin.ModelAdmin):
     search_fields = ("id","name","role","mobile","organization")
 
 
+from django.utils.html import format_html
+
 class OrganizationAdmin(admin.ModelAdmin):
-    list_display = ("id","name","org_type","order_status","note","expected_date")
+    list_display = ("name","org_type","order_status","note","expected_date","org_employees","org_services")
     list_filter = ("id","name","org_type","order_status","note","expected_date")
     search_fields = ("id","name","org_type","order_status","note","expected_date")
 
-
+    def services(self, obj: Organization) -> str:
+        service_type = ''
+        for c in obj.organizationservice_set.all():
+            service_type += f'<div>القسم: {c.service_section}</div><div>الخدمة: {c.service_type}</div>'
+        return format_html(service_type)
+        # return format_html(f'<div>{self.organizationservice_set.service_section}</div>')
 
 # admin.site.register(Organization)
 

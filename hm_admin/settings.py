@@ -1,6 +1,6 @@
 from pathlib import Path
 from datetime import timedelta
-
+import os
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -69,10 +69,22 @@ INSTALLED_APPS = [
     'geo_location',
 ]
 
+from django.utils.translation import gettext_lazy as _
+LOCALE_PATHS = [    
+    os.path.join(BASE_DIR, "locale")
+    ,
+]
+LANGUAGE_CODE ="en"
+# LANGUAGE_COOKIE_NAME = "alinma-lang"
+LANGUAGES = [
+    ("ar", _("Arabic")),
+    ("en", _("English")),
+]
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -84,7 +96,7 @@ ROOT_URLCONF = 'hm_admin.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
