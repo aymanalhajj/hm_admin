@@ -67,6 +67,7 @@ from custom_auth.models import JWTAuthentication
 def get_organizations_all(request):
     auth_status = JWTAuthentication.authenticate(request)
     if auth_status['status'] != 'succeed':
+        print(auth_status)
         return Response(auth_status,401)
     objects = Organization.objects.all()
     serializer = ComplexOrganizationSerialzer(objects, many = True)

@@ -51,21 +51,15 @@ def obtain_token(request):
     # permission_classes = [permissions.AllowAny]
     serializer_class = ObtainTokenSerializer
     serializer = serializer_class(data=request.data)
-    # serializer.is_valid(raise_exception=True)
-    serializer.is_valid()
-
-    username_or_phone_number = serializer.validated_data.get('username')
-    password = serializer.validated_data.get('password')
-    print("password")
-    print(serializer.validated_data.get('password'))
-    user = UserAccount.objects.filter(username=username_or_phone_number).first()
-    if user is None:
-        user = UserAccount.objects.filter(mobile=username_or_phone_number).first()
-    if user is None or not user.check_password(password):
-    # if user is None:
-        return Response({'message': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
-
-    # Generate the JWT token
-    jwt_token = JWTAuthentication.create_jwt(user)
-
-    return Response({'status':'succeed', 'message': 'login_successfully','data':jwt_token})
+    if(serializer.is_valid()):
+        username_or_phone_number = serializer.validated_data.get('username')
+        password = serializer.validated_data.get('password')
+        user = UserAccount.objects.filter(username=username_or_phone_number).first()
+        if user is None:
+            user = UserAccount.objects.filter(mobile=username_or_phone_number).first()
+        if user is None or not user.check_password(password):
+            return Response({'message': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
+        jwt_token = JWTAuthentication.create_jwt(user)
+        return Response({'status':'succeed', 'message': 'login_successfully','data':jwt_token}, status=status.HTTP_200_OK)
+    else:
+        return Response({'status':'failed', 'message': 'token validation failed',})

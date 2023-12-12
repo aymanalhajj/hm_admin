@@ -1,35 +1,7 @@
 from django.db import models
-
 from django.utils.translation import gettext_lazy as _
-
-ORG_TYPE = (
-    ('1','برج'),
-    ('2','مركز تجاري')
-)
-
-ORDER_STATUS = (
-    ('1','جديد'),
-    ('2','تحديد تاريخ'),
-    ('3','محتمل'),
-)
-
-EMPLOYEE_ROLE = (
-    ('1','مالك'),
-    ('2','موظف'),
-    ('3','مدير'),
-)
-
-SERVICE_TYPE = (
-    ('1','تركيب'),
-    ('2','صيانة'),
-    ('3','اعطال'),
-)
-
-SERVICE_SECTION = (
-    ('1','امن'),
-    ('2','مصاعد'),
-)
-
+from django.utils.html import format_html
+from custom_auth.models import UserAccount
 
 
 class OrganizationType(models.Model):
@@ -78,32 +50,39 @@ class ServiceSection(models.Model):
         verbose_name_plural = _('Service Section')
 
 
-from django.utils.html import format_html
+
+class OrderStage(models.Model):
+    name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
+    def __str__(self) -> str:
+        return self.name
+    class Meta:
+        managed = True
+        verbose_name = _('Order Stage')
+        verbose_name_plural = _('Order Stages')
 
 class Organization(models.Model):
     name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
-    org_type =  models.ForeignKey(OrganizationType,on_delete=models.DO_NOTHING,verbose_name=_("organization type") )
-    order_status =  models.ForeignKey(OrderStatus,on_delete=models.DO_NOTHING,verbose_name=_("order status") )
     note = models.CharField(max_length=1000, null=True,verbose_name=_("note") )
     expected_date = models.DateField(null= True,verbose_name=_("expected date") )
+    org_type =  models.ForeignKey(OrganizationType,on_delete=models.DO_NOTHING,verbose_name=_("organization type") )
+    order_status =  models.ForeignKey(OrderStatus,on_delete=models.DO_NOTHING,verbose_name=_("order status") )
+    employee =  models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("employee") ,related_name="org_employee" , default= None, null= True)
+    engineer =  models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("engineer") ,related_name="org_engineer", default= None, null= True)
+    order_stage =  models.ForeignKey(OrderStage,on_delete=models.DO_NOTHING,verbose_name=_("order stage"),related_name="ord_stage", default= None, null= True)#, default = OrderStage.objects.first().pk )
+
+
     @property
     def org_employees(self):
         employees = ''
-        # employees = "<style> .myTable , .myTable th, .myTable td '{'border: 1px solid black;'}' .myTable { border-collapse: collapse; width: 100%;}"
-        # employees += ".myTable th,.myTable td '{'padding: 8px;text-align: center;'}' .myTable tr:hover {background-color: #D6EEEE;}</style>"
         employees += '<table class="myTable"> <thead> <tr><td>الإسم</td><td>الصفة</td><td>الجوال</td></tr></thead><tbody> '
         for c in self.organizationemployee_set.all():
             employees += f'<tr><td>{c.name}</td><td>{c.role}</td><td>{c.mobile}</td> </tr>'
         employees += '</tbody></table>'
         return format_html(employees) 
-    org_employees.fget.short_description = _('organization employees')
-
-    
+    org_employees.fget.short_description = _('organization employees')    
     @property
     def org_services(self):
         services = ''
-        # employees = "<style> .myTable , .myTable th, .myTable td '{'border: 1px solid black;'}' .myTable { border-collapse: collapse; width: 100%;}"
-        # employees += ".myTable th,.myTable td '{'padding: 8px;text-align: center;'}' .myTable tr:hover {background-color: #D6EEEE;}</style>"
         services += '<table class="myTable"> <thead> <tr><td>القسم</td><td>الخدمة</td></tr></thead><tbody> '
         for c in self.organizationservice_set.all():
             services += f'<tr><td>{c.service_section}</td><td>{c.service_type}</td></tr>'
@@ -138,4 +117,34 @@ class OrganizationService(models.Model):
         managed = True
         verbose_name = _('Organization Service')
         verbose_name_plural = _('Organization Services')
+
+
+ORG_TYPE = (
+    ('1','برج'),
+    ('2','مركز تجاري')
+)
+
+ORDER_STATUS = (
+    ('1','جديد'),
+    ('2','تحديد تاريخ'),
+    ('3','محتمل'),
+)
+
+EMPLOYEE_ROLE = (
+    ('1','مالك'),
+    ('2','موظف'),
+    ('3','مدير'),
+)
+
+SERVICE_TYPE = (
+    ('1','تركيب'),
+    ('2','صيانة'),
+    ('3','اعطال'),
+)
+
+SERVICE_SECTION = (
+    ('1','امن'),
+    ('2','مصاعد'),
+)
+
 

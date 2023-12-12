@@ -37,6 +37,8 @@ class UserAccount(models.Model):
     def check_password(self,pwd):
         user = UserAccount.objects.filter(username = self.username, password = pwd).first()
         return user
+    def __str__(self) -> str:
+        return self.first_name + '  ' + self.last_name
     class Meta:
         managed = True
         verbose_name = _('User Account')

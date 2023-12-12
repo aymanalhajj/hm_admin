@@ -28,6 +28,11 @@ class OrganizationTypeAdmin(admin.ModelAdmin):
     list_filter = ("id","name")
     search_fields = ("name",)
 
+class OrderStageAdmin(admin.ModelAdmin):
+    list_display = ("id","name")
+    list_filter = ("id","name")
+    search_fields = ("name",)
+
 
 class OrganizationAdmin(admin.ModelAdmin):
     list_display = ("id","name","org_type","order_status","note","expected_date")
@@ -53,6 +58,7 @@ class OrganizationAdmin(admin.ModelAdmin):
     list_display = ("name","org_type","order_status","note","expected_date","org_employees","org_services")
     list_filter = ("id","name","org_type","order_status","note","expected_date")
     search_fields = ("id","name","org_type","order_status","note","expected_date")
+    readonly_fields = ("employee",)
 
     def services(self, obj: Organization) -> str:
         service_type = ''
@@ -74,3 +80,4 @@ _register(ServiceType,ServiceTypeAdmin)
 _register(OrderStatus,OrderStatusAdmin)
 _register(EmployeeRole,EmployeeRoleAdmin)
 _register(OrganizationType,OrganizationTypeAdmin)
+_register(OrderStage,OrderStageAdmin)
