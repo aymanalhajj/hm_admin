@@ -54,7 +54,7 @@ SIMPLE_JWT = {
 }
 DEBUG = True
 # DATE_INPUT_FORMATS = ['%d/%m/%Y']
-ALLOWED_HOSTS = ['192.168.154.138','localhost']
+ALLOWED_HOSTS = ['192.168.145.138','localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',

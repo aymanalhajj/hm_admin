@@ -62,13 +62,15 @@ class OrderStage(models.Model):
 
 class Organization(models.Model):
     name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
-    note = models.CharField(max_length=1000, null=True,verbose_name=_("note") )
     expected_date = models.DateField(null= True,verbose_name=_("expected date") )
     org_type =  models.ForeignKey(OrganizationType,on_delete=models.DO_NOTHING,verbose_name=_("organization type") )
     order_status =  models.ForeignKey(OrderStatus,on_delete=models.DO_NOTHING,verbose_name=_("order status") )
     employee =  models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("employee") ,related_name="org_employee" , default= None, null= True)
     engineer =  models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("engineer") ,related_name="org_engineer", default= None, null= True)
     order_stage =  models.ForeignKey(OrderStage,on_delete=models.DO_NOTHING,verbose_name=_("order stage"),related_name="ord_stage", default= None, null= True)#, default = OrderStage.objects.first().pk )
+    admin_note = models.TextField(max_length=1000, null=True,verbose_name=_("admin note") )
+    note = models.TextField(max_length=1000, null=True,verbose_name=_("note") )
+    engineer_note = models.TextField(max_length=1000, null=True,verbose_name=_("engineer note") )
 
 
     @property

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-12 17:39+0300\n"
+"POT-Creation-Date: 2023-12-14 17:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,9 +79,34 @@ msgstr "نوع المستخدم"
 msgid "User Account"
 msgstr "حساب المستخدم"
 
-#: .\geo_location\models.py:15 .\geo_location\models.py:16
+#: .\geo_location\apps.py:9 .\geo_location\apps.py:10
+#: .\geo_location\models.py:18 .\geo_location\models.py:19
 msgid "Geo Location"
 msgstr "الموقع الجغرافي"
+
+#: .\geo_location\models.py:7
+msgid "longitude"
+msgstr "خد الطول"
+
+#: .\geo_location\models.py:8
+msgid "latitude"
+msgstr "خد العرض"
+
+#: .\geo_location\models.py:9
+msgid "country name"
+msgstr "الدولة"
+
+#: .\geo_location\models.py:10
+msgid "locality"
+msgstr "المنطقة"
+
+#: .\geo_location\models.py:11
+msgid "address"
+msgstr "العنوان"
+
+#: .\geo_location\models.py:12 .\orgs\models.py:106 .\orgs\models.py:117
+msgid "organization"
+msgstr "المنشأة"
 
 #: .\hm_admin\settings.py:80
 msgid "Arabic"
@@ -97,7 +122,7 @@ msgstr "المنشأت"
 
 #: .\orgs\models.py:8 .\orgs\models.py:17 .\orgs\models.py:26
 #: .\orgs\models.py:35 .\orgs\models.py:44 .\orgs\models.py:55
-#: .\orgs\models.py:64 .\orgs\models.py:101
+#: .\orgs\models.py:64 .\orgs\models.py:103
 msgid "name"
 msgstr "الإسم"
 
@@ -135,80 +160,84 @@ msgstr "مراحل الطلب"
 
 #: .\orgs\models.py:65
 msgid "note"
-msgstr "الملاحظة"
+msgstr "ملاحظات الموظف"
 
 #: .\orgs\models.py:66
+msgid "admin note"
+msgstr "ملاحظات الإدارة"
+
+#: .\orgs\models.py:67
+msgid "engineer note"
+msgstr "ملاحظات المهندس"
+
+#: .\orgs\models.py:68
 msgid "expected date"
 msgstr "التاريخ المتوقع"
 
-#: .\orgs\models.py:67
+#: .\orgs\models.py:69
 msgid "organization type"
 msgstr "نوع المنشأة"
 
-#: .\orgs\models.py:68
+#: .\orgs\models.py:70
 msgid "order status"
 msgstr "حالة الطلب"
 
-#: .\orgs\models.py:69
+#: .\orgs\models.py:71
 msgid "employee"
 msgstr "الموظف الميداني"
 
-#: .\orgs\models.py:70
+#: .\orgs\models.py:72
 msgid "engineer"
 msgstr "المهندس المختص"
 
-#: .\orgs\models.py:71
+#: .\orgs\models.py:73
 msgid "order stage"
 msgstr "مرحلة الطلب"
 
-#: .\orgs\models.py:82
+#: .\orgs\models.py:84
 msgid "organization employees"
 msgstr "موظفين المنشأة"
 
-#: .\orgs\models.py:91
+#: .\orgs\models.py:93
 msgid "organization services"
 msgstr "خدمات المنشأة"
 
-#: .\orgs\models.py:97
+#: .\orgs\models.py:99
 msgid "Organization"
 msgstr "المنشأة"
 
-#: .\orgs\models.py:98
+#: .\orgs\models.py:100
 msgid "Organizations"
 msgstr "المنشأت"
 
-#: .\orgs\models.py:102
+#: .\orgs\models.py:104
 msgid "employee role"
 msgstr "صفة الموظف"
 
-#: .\orgs\models.py:103
+#: .\orgs\models.py:105
 msgid "mobile number"
 msgstr "رقم الجوال"
 
-#: .\orgs\models.py:104 .\orgs\models.py:115
-msgid "organization"
-msgstr "المنشأة"
-
-#: .\orgs\models.py:109
+#: .\orgs\models.py:111
 msgid "Organization Employee"
 msgstr "موظف المنشأة"
 
-#: .\orgs\models.py:110
+#: .\orgs\models.py:112
 msgid "Organization Employees"
 msgstr "موظفين المنشأة"
 
-#: .\orgs\models.py:113
+#: .\orgs\models.py:115
 msgid "service section"
 msgstr "قسم الخدمة"
 
-#: .\orgs\models.py:114
+#: .\orgs\models.py:116
 msgid "service type"
 msgstr "نوع الخدمة"
 
-#: .\orgs\models.py:118
+#: .\orgs\models.py:120
 msgid "Organization Service"
 msgstr "نوع الخدمة"
 
-#: .\orgs\models.py:119
+#: .\orgs\models.py:121
 msgid "Organization Services"
 msgstr "خدمات المنشأة"

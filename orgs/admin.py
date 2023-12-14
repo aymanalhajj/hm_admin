@@ -56,9 +56,9 @@ from django.utils.html import format_html
 
 class OrganizationAdmin(admin.ModelAdmin):
     list_display = ("name","org_type","order_status","note","expected_date","org_employees","org_services")
-    list_filter = ("id","name","org_type","order_status","note","expected_date")
+    list_filter = ("employee","expected_date","org_type","order_status","note",)
     search_fields = ("id","name","org_type","order_status","note","expected_date")
-    readonly_fields = ("employee",)
+    readonly_fields = ("employee","note","engineer_note")
 
     def services(self, obj: Organization) -> str:
         service_type = ''

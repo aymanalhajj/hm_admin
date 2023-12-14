@@ -38,12 +38,17 @@ class OrganizationWithLocationSerialzer(serializers.Serializer):
         # model = Organization
         fields = ('organization','geo_location')
 
+class EngineerNoteSerialzer(serializers.Serializer):
+    organization = serializers.CharField()
+    engineer_note = serializers.CharField()
+
 class ComplexOrganizationSerialzer(serializers.ModelSerializer):
     # organizationemployee_set = ComplexOrganizationEmployeeSerialzer(many = True)
     # organizationservice_set = ComplexOrganizationServiceSerialzer(many = True)
     class Meta:
         model = Organization
-        fields = ('id','name','org_type','order_status','note','expected_date','organizationemployee_set','organizationservice_set')
+        fields = ('id','name','org_type','order_status','note','expected_date',"admin_note","engineer_note"
+                  ,'organizationemployee_set' ,'organizationservice_set','geolocation_set')
         depth = 1
 
 class OrganizationTypeSerialzer(serializers.ModelSerializer):

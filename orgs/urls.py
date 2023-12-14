@@ -6,6 +6,7 @@ urlpatterns= [
     path('create-organization', views.create_organization_with_location),
     path('create-org-emp', views.create_organization_emp),
     path('create-org-service', views.create_organization_service),
+    path('update-org-note', views.update_organization_by_engineer),
     path('get-organizations', views.get_organizations_all),
     path('get-org-emps', views.get_org_emps_all),
     path('get-org-services', views.get_org_service_all),

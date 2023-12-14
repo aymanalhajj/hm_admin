@@ -60,6 +60,14 @@ def obtain_token(request):
         if user is None or not user.check_password(password):
             return Response({'message': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
         jwt_token = JWTAuthentication.create_jwt(user)
-        return Response({'status':'succeed', 'message': 'login_successfully','data':jwt_token}, status=status.HTTP_200_OK)
+        response_data =  {'status':'succeed', 'message': 'login_successfully','jwt':jwt_token,"is_engineer":"0"}
+        if(user.type==2):
+            response_data["is_engineer"] = 1
+        return Response(response_data, status=status.HTTP_200_OK)
     else:
         return Response({'status':'failed', 'message': 'token validation failed',})
+
+@api_view(['GET'])
+def validate_token(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    return Response(auth_status,200)

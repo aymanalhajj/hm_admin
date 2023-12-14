@@ -42,6 +42,22 @@ def create_organization_with_location(request):
 
 
 @api_view(['POST'])
+def update_organization_by_engineer(request):
+    serializer = EngineerNoteSerialzer(data = request.data)
+    if serializer.is_valid():
+        data = serializer.validated_data
+        print(data.get("engineer_note"))
+        Organization.objects.filter(id = data.get("organization")).update(engineer_note = data.get("engineer_note"))
+        # organization.engineer_note = data.get("engineer_note")
+        # organization.save()
+        
+        return Response({'status':'succeed', 'message':'organization_created_successfully'})
+    else:
+        print({'status':'failed','errors': serializer.errors})
+        return Response({'status':'failed','errors': serializer.errors})
+
+
+@api_view(['POST'])
 def create_organization_emp(request):
     serializer = OrganizationEmployeeSerialzer(data = request.data)
     if serializer.is_valid():
