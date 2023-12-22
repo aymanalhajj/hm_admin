@@ -4,6 +4,17 @@ from django.utils.html import format_html
 from custom_auth.models import UserAccount
 
 
+YES_NO = (
+    (0,_('no')),
+    (1,_('yes'))
+)
+
+VISIT_STATE = (
+    (1,_('agreed')),
+    (2,_('disagreed'))
+)
+
+
 class OrganizationType(models.Model):
     name = models.CharField(max_length= 100 ,null = False,verbose_name=_("name") )
     def __str__(self) -> str:
@@ -21,6 +32,15 @@ class OrderStatus(models.Model):
         managed = True
         verbose_name = _('Order Status')
         verbose_name_plural = _('Order Statuses')
+    
+class VisitStatus(models.Model):
+    name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
+    def __str__(self) -> str:
+        return self.name
+    class Meta:
+        managed = True
+        verbose_name = _('Visit Status')
+        verbose_name_plural = _('Visit Statuses')
     
 class EmployeeRole(models.Model):
     name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
@@ -42,6 +62,7 @@ class ServiceType(models.Model):
     
 class ServiceSection(models.Model):
     name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
+    section_manager =  models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("section manager") ,related_name="section_manager" , default= None, null= True)
     def __str__(self) -> str:
         return self.name
     class Meta:
@@ -49,7 +70,16 @@ class ServiceSection(models.Model):
         verbose_name = _('Service Section')
         verbose_name_plural = _('Service Section')
 
-
+class ServiceSectionEmployee(models.Model):
+    service_section = models.ForeignKey(ServiceSection,on_delete=models.CASCADE,verbose_name=_("service section") , default= None, null= True)
+    service_type = models.ForeignKey(ServiceType,on_delete=models.CASCADE,verbose_name=_("service type") , default= None, null= True)
+    employee =  models.ForeignKey(UserAccount,on_delete=models.CASCADE,verbose_name=_("section engineer") , default= None, null= True)
+    def __str__(self) -> str:
+        return self.service_section.name
+    class Meta:
+        managed = True
+        verbose_name = _('Service Section Employee')
+        verbose_name_plural = _('Service Section Employees')
 
 class OrderStage(models.Model):
     name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
@@ -67,9 +97,10 @@ class Organization(models.Model):
     order_status =  models.ForeignKey(OrderStatus,on_delete=models.DO_NOTHING,verbose_name=_("order status") )
     employee =  models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("employee") ,related_name="org_employee" , default= None, null= True)
     engineer =  models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("engineer") ,related_name="org_engineer", default= None, null= True)
+    manager =  models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("manager") ,related_name="org_manager", default= None, null= True)
     order_stage =  models.ForeignKey(OrderStage,on_delete=models.DO_NOTHING,verbose_name=_("order stage"),related_name="ord_stage", default= None, null= True)#, default = OrderStage.objects.first().pk )
     admin_note = models.TextField(max_length=1000, null=True,verbose_name=_("admin note") )
-    note = models.TextField(max_length=1000, null=True,verbose_name=_("note") )
+    note = models.TextField(max_length=1000, null=True, verbose_name=_("note") )
     engineer_note = models.TextField(max_length=1000, null=True,verbose_name=_("engineer note") )
 
 
@@ -99,6 +130,22 @@ class Organization(models.Model):
         verbose_name = _('Organization')
         verbose_name_plural = _('Organizations')
 
+
+class OrganizationVisit(models.Model):
+    organization = models.ForeignKey(Organization,on_delete=models.CASCADE,verbose_name=_("organization") )
+    service_section = models.ForeignKey(ServiceSection,on_delete=models.CASCADE,verbose_name=_("service section") )
+    service_type = models.ForeignKey(ServiceType,on_delete=models.CASCADE,verbose_name=_("service type") )
+    visit_state = models.IntegerField(default=0,choices=VISIT_STATE ,verbose_name=_("visit state") )
+    visit_note =  models.CharField(max_length= 100 ,null = False, blank=True ,verbose_name=_("visit note") )
+    visitor = models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("visitor") ,related_name="org_visitor", default= None, null= True)
+    is_reviewed = models.IntegerField(default=0,choices=YES_NO,verbose_name=_("is reviewed") )
+    reviewer = models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("reviewer") ,related_name="org_reviewer", default= None, null= True)
+    review_note =  models.CharField(max_length= 100 ,null = False, blank=True ,verbose_name=_("review note") )
+    class Meta:
+        managed = True
+        verbose_name = _('Organization Visit')
+        verbose_name_plural = _('Organization Visits')
+
 class OrganizationEmployee(models.Model):
     name = models.CharField(max_length= 100 ,null = False, blank=True ,verbose_name=_("name") )
     role =  models.ForeignKey(EmployeeRole,on_delete=models.DO_NOTHING,verbose_name=_("employee role") )
@@ -115,6 +162,7 @@ class OrganizationService(models.Model):
     service_section = models.ForeignKey(ServiceSection,on_delete=models.CASCADE,verbose_name=_("service section") )
     service_type = models.ForeignKey(ServiceType,on_delete=models.CASCADE,verbose_name=_("service type") )
     organization = models.ForeignKey(Organization,on_delete=models.CASCADE,verbose_name=_("organization") )
+    is_visited = models.IntegerField(default=0, verbose_name=_("is visited"))
     class Meta:
         managed = True
         verbose_name = _('Organization Service')

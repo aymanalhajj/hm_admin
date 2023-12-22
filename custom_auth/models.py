@@ -24,11 +24,11 @@ class UserType(models.Model):
 
 class UserAccount(models.Model):
     first_name = models.CharField(max_length=100,verbose_name=_('first name'))
-    second_name = models.CharField(max_length=100,verbose_name=_('second name'))
-    third_name = models.CharField(max_length=100,verbose_name=_('third name'))
-    fourth_name = models.CharField(max_length=100,verbose_name=_('fourth name'))
-    last_name = models.CharField(max_length=100,verbose_name=_('last name'))
-    email = models.CharField(max_length=100,verbose_name=_('email'))
+    second_name = models.CharField(max_length=100,verbose_name=_('second name'), blank=True, )
+    third_name = models.CharField(max_length=100,verbose_name=_('third name'), blank=True, )
+    fourth_name = models.CharField(max_length=100,verbose_name=_('fourth name'), blank=True, )
+    last_name = models.CharField(max_length=100,verbose_name=_('last name')  )
+    email = models.CharField(max_length=100,verbose_name=_('email'), blank=True, )
     mobile = models.CharField(max_length=100,verbose_name=_('mobile'))
     username = models.CharField(max_length=100,verbose_name=_('username'))
     password = models.CharField(max_length=100,verbose_name=_('password'))
@@ -83,7 +83,9 @@ class JWTAuthentication():
                 # raise AuthenticationFailed('User not found')
 
         # Return the user and token payload
-        return {'status':'succeed','user_id':user.id,'user_name':user.username}
+        from .serializer import CustomUserAccountSerializer
+        serializer = CustomUserAccountSerializer(user)
+        return {'status':'succeed','user_id':user.id,'user_name':user.username, "user":user}
         # return user, payload
 
     def authenticate_header(self, request):

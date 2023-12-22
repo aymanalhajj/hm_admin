@@ -48,12 +48,50 @@ def update_organization_by_engineer(request):
         data = serializer.validated_data
         print(data.get("engineer_note"))
         Organization.objects.filter(id = data.get("organization")).update(engineer_note = data.get("engineer_note"))
-        # organization.engineer_note = data.get("engineer_note")
-        # organization.save()
         
         return Response({'status':'succeed', 'message':'organization_created_successfully'})
     else:
         print({'status':'failed','errors': serializer.errors})
+        return Response({'status':'failed','errors': serializer.errors})
+
+
+@api_view(['POST'])
+def visit_organization(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        print(auth_status)
+        return Response(auth_status,401)
+    serializer = VisitSerializer(data = request.data)
+    if serializer.is_valid():
+        data = serializer.validated_data
+        visit_instance = serializer.save()
+        visit_instance.visitor = auth_status['user']
+        visit_instance.save()
+        OrganizationService.objects.filter(
+            service_section_id = visit_instance.service_section_id,
+            service_type_id = visit_instance.service_type_id,
+            organization_id = visit_instance.organization_id).update(
+                is_visited = 1
+            )
+        return Response({'status':'succeed', 'message':'visit_created_successfully',"data":VisitSerializer(visit_instance).data})
+    else:
+        return Response({'status':'failed','errors': serializer.errors})
+
+@api_view(['POST'])
+def review_organization_visit(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        return Response(auth_status,401)
+    serializer = VisitReviewSerializer(data = request.data)
+    if serializer.is_valid():
+        data = serializer.validated_data
+        OrganizationVisit.objects.filter(id = data.get("visit_id")).update(
+            review_note = data.get("review_note"),
+            reviewer = auth_status['user_id'],
+            is_reviewed = 1
+            )
+        return Response({'status':'succeed', 'message':'visit_reviewed_successfully'})
+    else:
         return Response({'status':'failed','errors': serializer.errors})
 
 
@@ -88,6 +126,52 @@ def get_organizations_all(request):
     objects = Organization.objects.all()
     serializer = ComplexOrganizationSerialzer(objects, many = True)
     return Response(serializer.data)
+
+from django.db.models import Subquery, OuterRef,Q
+from django.db.models.expressions import RawSQL
+import operator
+import functools
+# query = functools.reduce(
+#     operator.or_, 
+#     (Q(firstname=fn, lastname=ln) for fn, ln in zip(first_list, last_list))
+#     )
+
+@api_view(['GET']) 
+def get_organizations_for_visit(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        return Response(auth_status,401)
+    manager_user = ServiceSection.objects.filter(section_manager = auth_status['user_id'])
+    if manager_user.count()>0:
+        objects = Organization.objects.filter( id__in = Subquery(OrganizationService.objects.filter(is_visited = 0, service_section__in = Subquery(manager_user.values('id'))).values('organization')))
+        serializer = ComplexOrganizationSerialzer(objects, many = True)
+        services = OrganizationService.objects.filter(is_visited = 0,service_section__in = Subquery(manager_user.values('id')))
+        service_serializer =  OrganizationServiceSerialzer(services,many = True)
+        return Response({"orgs":serializer.data,"authorized_services" : service_serializer.data })
+    section_employees = ServiceSectionEmployee.objects.filter(employee = auth_status['user_id'])
+    if section_employees.count()>0:
+        objects = Organization.objects.filter(id__in = RawSQL("select organization_id from orgs_OrganizationService where is_visited = 0 and ( service_section_id, service_type_id) in %s ",[list(section_employees.values_list("service_section","service_type"))])) 
+        serializer = ComplexOrganizationSerialzer(objects, many = True)
+        services = OrganizationService.objects.raw("select * from orgs_OrganizationService where is_visited = 0 and ( service_section_id, service_type_id) in %s ",[list(section_employees.values_list("service_section","service_type"))])
+        service_serializer =  OrganizationServiceSerialzer(services,many = True)
+        return Response({"orgs":serializer.data,"authorized_services" : service_serializer.data })
+    return Response([])
+
+@api_view(['GET']) 
+def get_organizations_for_review(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        print(auth_status)
+        return Response(auth_status,401)
+    manager_user = ServiceSection.objects.filter(section_manager = auth_status['user_id'])
+    if manager_user.count()>0:
+        objects = Organization.objects.filter(id__in = Subquery(OrganizationVisit.objects.filter(is_reviewed =  0, service_section__in = Subquery(manager_user.values('id'))).values('organization')))
+        serializer = OrganizationForReviewSerialzer(objects, many = True)
+        # services = OrganizationService.objects.filter(service_section__in = Subquery(manager_user.values('id')))
+        # service_serializer =  OrganizationServiceSerialzer(services,many = True)
+        return Response(serializer.data)
+    return Response([])
+    
 
 
 @api_view(['GET']) 
