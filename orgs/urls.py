@@ -10,6 +10,8 @@ urlpatterns= [
     path('create-org-emp', views.create_organization_emp),
     path('create-org-service', views.create_organization_service),
     path('update-org-note', views.update_organization_by_engineer),
+    path('upload-org-image', views.upload_organization_image),
+    path('download-org-image', views.download_organization_image),
     path('get-organizations', views.get_organizations_all),
     path('get-organizations-for-visit', views.get_organizations_for_visit),
     path('get-organizations-for-review', views.get_organizations_for_review),

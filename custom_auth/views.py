@@ -58,7 +58,7 @@ def obtain_token(request):
         if user is None:
             user = UserAccount.objects.filter(mobile=username_or_phone_number).first()
         if user is None or not user.check_password(password):
-            return Response({'message': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'message': 'بيانات الدخول غير صحيحة'}, status=status.HTTP_200_OK)
         jwt_token = JWTAuthentication.create_jwt(user)
         response_data =  {'status':'succeed', 'message': 'login_successfully','jwt':jwt_token,"is_engineer":"0","is_supervisor":"0"}
         if(user.type.id==2):

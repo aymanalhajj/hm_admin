@@ -27,7 +27,8 @@ def create_organization_with_location(request):
                                                    org_type= data.get("org_type"),
                                                    order_status=data.get("order_status"),
                                                    note=data.get("note"),
-                                                   expected_date=data.get("expected_date"))
+                                                   expected_date=data.get("expected_date"),
+                                                   image_url = data.get("image_url"))
         
         geo_location = GeoLocation.objects.create(longitude = data.get("longitude"),
                                                   latitude= data.get("latitude"),
@@ -50,6 +51,26 @@ def update_organization_by_engineer(request):
         Organization.objects.filter(id = data.get("organization")).update(engineer_note = data.get("engineer_note"))
         
         return Response({'status':'succeed', 'message':'organization_created_successfully'})
+    else:
+        print({'status':'failed','errors': serializer.errors})
+        return Response({'status':'failed','errors': serializer.errors})
+import os
+@api_view(['POST'])
+def upload_organization_image(request):
+    serializer = OrganizationFileSerialzer(data = request.data)
+    if serializer.is_valid():
+        data = serializer.validated_data
+        organization = Organization.objects.get(id = data.get("id"))
+        if(organization.image_url != None and organization.image_url != ""):
+            old_file_path = organization.image_url.path
+            #Delete old file when upload new one
+            if os.path.exists(old_file_path):
+                os.remove(old_file_path)    
+        organization.image_url = data.get('image_url')
+        organization.save()
+
+        
+        return Response({'status':'succeed', 'message':'image_uploaded_successfully'})
     else:
         print({'status':'failed','errors': serializer.errors})
         return Response({'status':'failed','errors': serializer.errors})
@@ -126,6 +147,24 @@ def get_organizations_all(request):
     objects = Organization.objects.all()
     serializer = ComplexOrganizationSerialzer(objects, many = True)
     return Response(serializer.data)
+
+@api_view(['GET']) 
+def download_organization_image(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        print(auth_status)
+        return Response(auth_status,401)
+    
+    # print(request.headers["id"])
+    # imageSerializer = OrganizationImageSerializer(data = request.data)
+    if("id" in request.headers):
+        # print(imageSerializer.validated_data.get("id"))
+        objects = Organization.objects.filter(id =  request.headers["id"])
+        serializer = OrganizationImageSerializer(objects.first())
+        return Response(serializer.data)
+    else:
+        return Response({'status':'failed','message': 'organization id not passed'})
+    
 
 from django.db.models import Subquery, OuterRef,Q
 from django.db.models.expressions import RawSQL

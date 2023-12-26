@@ -5,6 +5,11 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Actual directory user files go to
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+
+# URL used to access the media
+MEDIA_URL = '/media/'
 
 SECRET_KEY = 'django-insecure-s6v!!=ss*#cyr$r!9qku!qovytlh3veg4nflg7g9d4jdifj9j2'
 
@@ -54,7 +59,7 @@ SIMPLE_JWT = {
 }
 DEBUG = True
 # DATE_INPUT_FORMATS = ['%d/%m/%Y']
-ALLOWED_HOSTS = ['192.168.145.138','localhost']
+ALLOWED_HOSTS = ['192.168.84.138','localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -67,6 +72,7 @@ INSTALLED_APPS = [
     'orgs',
     'custom_auth',
     'geo_location',
+    # 'drf_extra_fields',
 ]
 
 from django.utils.translation import gettext_lazy as _

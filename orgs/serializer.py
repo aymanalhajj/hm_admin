@@ -26,7 +26,10 @@ class OrganizationServiceSerialzer(serializers.ModelSerializer):
         model = OrganizationService
         fields = "__all__"
 
+from drf_extra_fields.fields import Base64ImageField
+
 class OrganizationSerialzer(serializers.ModelSerializer):
+    image_url =  Base64ImageField(required=False)
     class Meta:
         model = Organization
         fields = "__all__"
@@ -41,6 +44,17 @@ class OrganizationWithLocationSerialzer(serializers.Serializer):
 class EngineerNoteSerialzer(serializers.Serializer):
     organization = serializers.CharField()
     engineer_note = serializers.CharField()
+
+
+class OrganizationFileSerialzer(serializers.Serializer):
+    id = serializers.CharField()
+    image_url =  Base64ImageField(required=True)
+
+    
+    # image_url =  Base64ImageField(required=False)
+    # class Meta:
+    #     model = Organization
+    #     fields = ("id","image_url")
 
 class VisitReviewSerializer(serializers.Serializer):
     visit_id = serializers.IntegerField()
@@ -58,9 +72,26 @@ class ComplexOrganizationSerialzer(serializers.ModelSerializer):
     class Meta:
         model = Organization
         fields = ('id','name','org_type','order_status','note','expected_date',"admin_note","engineer_note","order_stage"
-                  ,'organizationemployee_set' ,'organizationservice_set','geolocation_set')
+                  ,'organizationemployee_set' ,'organizationservice_set','geolocation_set','image_url')
         depth = 1
 
+from django.core.files import File
+import base64
+
+class OrganizationImageSerializer(serializers.ModelSerializer):
+    base64_image = serializers.SerializerMethodField(required = False)
+    image_url = serializers.CharField(required = False)
+    class Meta:
+        model = Organization
+        fields = ('base64_image', 'id', 'image_url')
+
+    def get_base64_image(self, obj):
+        f = open(obj.image_url.path, 'rb')
+        image = File(f)
+        data = base64.b64encode(image.read())
+        f.close()
+        return data
+    
 class VisitorSerializer(serializers.Serializer):
     first_name = serializers.CharField()
     last_name = serializers.CharField()
@@ -80,12 +111,16 @@ class DeepVisitSerializer(serializers.ModelSerializer):
 
 class OrganizationForReviewSerialzer(serializers.ModelSerializer):
     # organizationemployee_set = ComplexOrganizationEmployeeSerialzer(many = True)
-    organizationvisit_set = DeepVisitSerializer(many = True)
+    # organizationvisit_set = DeepVisitSerializer(many = True)
+    organizationvisit_set = serializers.SerializerMethodField(source='get_organizationvisit_set')
     class Meta:
         model = Organization
         fields = ('id','name','org_type','order_status','note','expected_date',"admin_note","engineer_note","order_stage"
                   ,'organizationvisit_set','geolocation_set')
         depth = 1
+    def get_organizationvisit_set(self, obj):
+        return DeepVisitSerializer(obj.organizationvisit_set.filter(is_reviewed = 0),many =True).data
+        # return DeepVisitSerializer(obj.organizationvisit_set.all(),many =True).data
 
 class OrganizationTypeSerialzer(serializers.ModelSerializer):
     class Meta:

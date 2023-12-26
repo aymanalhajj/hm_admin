@@ -90,6 +90,12 @@ class OrderStage(models.Model):
         verbose_name = _('Order Stage')
         verbose_name_plural = _('Order Stages')
 
+
+def file_location(instance, filename):
+    file_path = f"images/{filename}"
+    print(instance.id)
+    return file_path
+
 class Organization(models.Model):
     name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
     expected_date = models.DateField(null= True,verbose_name=_("expected date") )
@@ -102,6 +108,7 @@ class Organization(models.Model):
     admin_note = models.TextField(max_length=1000, null=True,verbose_name=_("admin note") )
     note = models.TextField(max_length=1000, null=True, verbose_name=_("note") )
     engineer_note = models.TextField(max_length=1000, null=True,verbose_name=_("engineer note") )
+    image_url = models.ImageField(upload_to=file_location, blank=True, null=True)
 
 
     @property
