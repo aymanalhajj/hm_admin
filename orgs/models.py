@@ -95,20 +95,22 @@ def file_location(instance, filename):
     file_path = f"images/{filename}"
     print(instance.id)
     return file_path
+from django.utils import timezone
 
 class Organization(models.Model):
     name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
-    expected_date = models.DateField(null= True,verbose_name=_("expected date") )
     org_type =  models.ForeignKey(OrganizationType,on_delete=models.DO_NOTHING,verbose_name=_("organization type") )
     order_status =  models.ForeignKey(OrderStatus,on_delete=models.DO_NOTHING,verbose_name=_("order status") )
     employee =  models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("employee") ,related_name="org_employee" , default= None, null= True)
-    engineer =  models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("engineer") ,related_name="org_engineer", default= None, null= True)
-    manager =  models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("manager") ,related_name="org_manager", default= None, null= True)
-    order_stage =  models.ForeignKey(OrderStage,on_delete=models.DO_NOTHING,verbose_name=_("order stage"),related_name="ord_stage", default= None, null= True)#, default = OrderStage.objects.first().pk )
-    admin_note = models.TextField(max_length=1000, null=True,verbose_name=_("admin note") )
     note = models.TextField(max_length=1000, null=True, verbose_name=_("note") )
-    engineer_note = models.TextField(max_length=1000, null=True,verbose_name=_("engineer note") )
+    expected_date = models.DateField(null= True,verbose_name=_("expected date") )
+    order_stage =  models.ForeignKey(OrderStage,on_delete=models.DO_NOTHING,verbose_name=_("order stage"),related_name="ord_stage", default= None, null= True,blank=True)#, default = OrderStage.objects.first().pk )
     image_url = models.ImageField(upload_to=file_location, blank=True, null=True)
+    created_date = models.DateField(null= True,verbose_name=_("created date"),default=  timezone.now)
+    # engineer =  models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("engineer") ,related_name="org_engineer", default= None, null= True)
+    # manager =  models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("manager") ,related_name="org_manager", default= None, null= True)
+    # admin_note = models.TextField(max_length=1000, null=True,verbose_name=_("admin note") ,blank=True)
+    # engineer_note = models.TextField(max_length=1000, null=True,verbose_name=_("engineer note") )
 
 
     @property
@@ -148,6 +150,7 @@ class OrganizationVisit(models.Model):
     is_reviewed = models.IntegerField(default=0,choices=YES_NO,verbose_name=_("is reviewed") )
     reviewer = models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("reviewer") ,related_name="org_reviewer", default= None, null= True)
     review_note =  models.CharField(max_length= 100 ,null = False, blank=True ,verbose_name=_("review note") )
+    created_date = models.DateField(null= True,verbose_name=_("created date"),default=  timezone.now)
     class Meta:
         managed = True
         verbose_name = _('Organization Visit')

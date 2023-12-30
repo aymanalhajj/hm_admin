@@ -89,7 +89,8 @@ class OrganizationAdmin(admin.ModelAdmin):
     list_display = ("name","org_type","order_status","note","expected_date","org_employees","org_services")
     list_filter = ("employee","expected_date","org_type","order_status","note",)
     search_fields = ("id","name","org_type","order_status","note","expected_date")
-    readonly_fields = ("employee","note","engineer_note")
+    readonly_fields = ("name","org_type","order_status","employee","note","order_stage","expected_date","created_date")
+    exclude = ("image_url",)
 
     def services(self, obj: Organization) -> str:
         service_type = ''

@@ -19,6 +19,10 @@ def create_organization(request):
 
 @api_view(['POST'])
 def create_organization_with_location(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        print(auth_status)
+        return Response(auth_status,401)
     serializer = OrganizationWithLocationSerialzer(data = request.data)
     if serializer.is_valid():
         data = serializer.validated_data
@@ -28,7 +32,12 @@ def create_organization_with_location(request):
                                                    order_status=data.get("order_status"),
                                                    note=data.get("note"),
                                                    expected_date=data.get("expected_date"),
+                                                   employee = auth_status['user'],
                                                    image_url = data.get("image_url"))
+        
+        
+        # organization.employee = auth_status['user']
+        # organization.save()
         
         geo_location = GeoLocation.objects.create(longitude = data.get("longitude"),
                                                   latitude= data.get("latitude"),
