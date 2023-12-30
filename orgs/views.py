@@ -189,9 +189,9 @@ def get_organizations_for_visit(request):
         return Response({"orgs":serializer.data,"authorized_services" : service_serializer.data })
     section_employees = ServiceSectionEmployee.objects.filter(employee = auth_status['user_id'])
     if section_employees.count()>0:
-        objects = Organization.objects.filter(id__in = RawSQL("select organization_id from orgs_OrganizationService where is_visited = 0 and ( service_section_id, service_type_id) in %s ",[list(section_employees.values_list("service_section","service_type"))])) 
+        objects = Organization.objects.filter(id__in = RawSQL("select organization_id from orgs_organizationservice where is_visited = 0 and ( service_section_id, service_type_id) in %s ",[list(section_employees.values_list("service_section","service_type"))])) 
         serializer = ComplexOrganizationSerialzer(objects, many = True)
-        services = OrganizationService.objects.raw("select * from orgs_OrganizationService where is_visited = 0 and ( service_section_id, service_type_id) in %s ",[list(section_employees.values_list("service_section","service_type"))])
+        services = OrganizationService.objects.raw("select * from orgs_organizationservice where is_visited = 0 and ( service_section_id, service_type_id) in %s ",[list(section_employees.values_list("service_section","service_type"))])
         service_serializer =  OrganizationServiceSerialzer(services,many = True)
         return Response({"orgs":serializer.data,"authorized_services" : service_serializer.data })
     return Response([])
