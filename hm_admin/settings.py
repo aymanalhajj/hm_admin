@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     'orgs',
     'custom_auth',
     'geo_location',
+    'app_settings',
     # 'drf_extra_fields',
 ]
 
