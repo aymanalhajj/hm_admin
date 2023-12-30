@@ -49,7 +49,7 @@ class OrderStage(models.Model):
 
 class ServiceSection(models.Model):
     name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
-    section_manager =  models.ForeignKey(UserAccount,on_delete=models.SET_NULL,verbose_name=_("section manager") ,related_name="section_manager" , default= None, null= True)
+    section_manager =  models.ForeignKey(UserAccount,on_delete=models.SET_NULL,verbose_name=_("section manager") ,related_name="section_manager" , default= None, null= True,blank=True)
     def __str__(self) -> str:
         return self.name
     class Meta:
@@ -81,8 +81,6 @@ class ServiceSectionEmployee(models.Model):
 
 class ProjectSetting(models.Model):
     days_before_contract = models.IntegerField(null = False ,verbose_name=_("days before contract") )
-    # def __str__(self) -> str:
-    #     return self.service_section.name
     class Meta:
         managed = True
         verbose_name = _('Project Setting')

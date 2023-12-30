@@ -80,6 +80,7 @@ class OrganizationEmployee(models.Model):
     role =  models.ForeignKey(EmployeeRole,on_delete=models.DO_NOTHING,verbose_name=_("employee role") )
     mobile = models.CharField(max_length= 100 ,null = False , blank=True ,verbose_name=_("mobile number") )
     organization = models.ForeignKey(Organization,on_delete=models.CASCADE,verbose_name=_("organization") )
+    created_date = models.DateField(null= True,verbose_name=_("created date"),default=  timezone.now)
     def __str__(self) -> str:
         return self.name
     class Meta:
@@ -92,6 +93,7 @@ class OrganizationService(models.Model):
     service_type = models.ForeignKey(ServiceType,on_delete=models.CASCADE,verbose_name=_("service type") )
     organization = models.ForeignKey(Organization,on_delete=models.CASCADE,verbose_name=_("organization") )
     is_visited = models.IntegerField(default=0, verbose_name=_("is visited"))
+    created_date = models.DateField(null= True,verbose_name=_("created date"),default=  timezone.now)
     class Meta:
         managed = True
         verbose_name = _('Organization Service')
