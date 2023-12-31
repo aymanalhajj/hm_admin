@@ -12,16 +12,6 @@ from django.db.models.expressions import RawSQL
 import operator
 import functools
 
-@api_view(['POST'])
-def create_organization(request):
-    serializer = OrganizationSerialzer(data = request.data)
-    if serializer.is_valid():
-        org = serializer.save()
-        print("create organizations")
-        return Response({'status':'succeed', 'message': 'organization_created_successfully',"data":org.id})
-    else:
-        return Response({'status':'failed','errors': serializer.errors})
-
 
 @api_view(['POST'])
 def create_organization_with_location(request):
@@ -36,6 +26,7 @@ def create_organization_with_location(request):
         organization = Organization.objects.create(name = data.get("name"),
                                                    org_type= data.get("org_type"),
                                                    order_status=data.get("order_status"),
+                                                   order_stage_id = 1,
                                                    note=data.get("note"),
                                                    expected_date=data.get("expected_date"),
                                                    employee = auth_status['user'],
@@ -53,6 +44,10 @@ def create_organization_with_location(request):
     
 @api_view(['POST'])
 def create_organization_emp(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        print(auth_status)
+        return Response(auth_status,401)
     serializer = OrganizationEmployeeSerialzer(data = request.data)
     if serializer.is_valid():
         serializer.save()
@@ -62,6 +57,10 @@ def create_organization_emp(request):
 
 @api_view(['POST'])
 def create_organization_service(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        print(auth_status)
+        return Response(auth_status,401)
     serializer = OrganizationServiceSerialzer(data = request.data)
     if serializer.is_valid():
         serializer.save()
@@ -73,20 +72,11 @@ def create_organization_service(request):
 
 
 @api_view(['POST'])
-def update_organization_by_engineer(request):
-    serializer = EngineerNoteSerialzer(data = request.data)
-    if serializer.is_valid():
-        data = serializer.validated_data
-        print(data.get("engineer_note"))
-        Organization.objects.filter(id = data.get("organization")).update(engineer_note = data.get("engineer_note"))
-        
-        return Response({'status':'succeed', 'message':'organization_created_successfully'})
-    else:
-        print({'status':'failed','errors': serializer.errors})
-        return Response({'status':'failed','errors': serializer.errors})
-
-@api_view(['POST'])
 def upload_organization_image(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        print(auth_status)
+        return Response(auth_status,401)
     serializer = OrganizationFileSerialzer(data = request.data)
     if serializer.is_valid():
         data = serializer.validated_data
@@ -145,6 +135,19 @@ def review_organization_visit(request):
         return Response({'status':'failed','errors': serializer.errors})
 
 
+@api_view(['POST'])
+def submit_organization_for_study(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        print(auth_status)
+        return Response(auth_status,401)
+    if("id" in request.headers):
+        Organization.objects.filter(id = request.headers["id"]).update(order_stage = 2)
+        return Response({'status':'succeed', 'message':'organization_submited_successfully'})
+    else:
+        return Response({'status':'failed','message': 'organization id not passed'})
+    
+
 @api_view(['GET']) 
 def get_organizations_all(request):
     auth_status = JWTAuthentication.authenticate(request)
@@ -154,6 +157,32 @@ def get_organizations_all(request):
     objects = Organization.objects.all()
     serializer = ComplexOrganizationSerialzer(objects, many = True)
     return Response(serializer.data)
+
+@api_view(['GET']) 
+def get_organization_list(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        print(auth_status)
+        return Response(auth_status,401)
+    # objects = Organization.objects.filter(employee = auth_status['user_id'] ).all()
+    objects = Organization.objects.filter(order_stage = 1,employee = auth_status['user_id'] ).all()
+    serializer = SimpleOrganizationSerialzer(objects, many = True)
+    return Response(serializer.data)
+
+@api_view(['GET']) 
+def get_organization(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        print(auth_status)
+        return Response(auth_status,401)
+    
+    if("id" in request.headers):
+        objects = Organization.objects.filter(id = request.headers["id"]).all()
+        serializer = ComplexOrganizationSerialzer(objects, many = True)
+        return Response(serializer.data)
+    else:
+        return Response({'status':'failed','message': 'organization id not passed'})
+    
 
 @api_view(['GET']) 
 def download_organization_image(request):
@@ -207,15 +236,40 @@ def get_organizations_for_review(request):
         # service_serializer =  OrganizationServiceSerialzer(services,many = True)
         return Response(serializer.data)
     return Response([])
-    
-@api_view(['GET']) 
-def get_org_emps_all(request):
-    objects = OrganizationEmployee.objects.filter(organization= request.GET.get("org_id")).all()
-    serializer = OrganizationEmployeeSerialzer(objects, many = True)
-    return Response(serializer.data)
 
-@api_view(['GET']) 
-def get_org_service_all(request):
-    objects = OrganizationService.objects.filter(organization= request.GET.get("org_id")).all()
-    serializer = OrganizationServiceSerialzer(objects, many = True)
-    return Response(serializer.data)
+
+
+# @api_view(['GET']) 
+# def get_org_emps_all(request):
+#     objects = OrganizationEmployee.objects.filter(organization= request.GET.get("org_id")).all()
+#     serializer = OrganizationEmployeeSerialzer(objects, many = True)
+#     return Response(serializer.data)
+
+# @api_view(['GET']) 
+# def get_org_service_all(request):
+#     objects = OrganizationService.objects.filter(organization= request.GET.get("org_id")).all()
+#     serializer = OrganizationServiceSerialzer(objects, many = True)
+#     return Response(serializer.data)
+
+# @api_view(['POST'])
+# def create_organization(request):
+#     serializer = OrganizationSerialzer(data = request.data)
+#     if serializer.is_valid():
+#         org = serializer.save()
+#         print("create organizations")
+#         return Response({'status':'succeed', 'message': 'organization_created_successfully',"data":org.id})
+#     else:
+#         return Response({'status':'failed','errors': serializer.errors})
+
+# @api_view(['POST'])
+# def update_organization_by_engineer(request):
+#     serializer = EngineerNoteSerialzer(data = request.data)
+#     if serializer.is_valid():
+#         data = serializer.validated_data
+#         print(data.get("engineer_note"))
+#         Organization.objects.filter(id = data.get("organization")).update(engineer_note = data.get("engineer_note"))
+        
+#         return Response({'status':'succeed', 'message':'organization_created_successfully'})
+#     else:
+#         print({'status':'failed','errors': serializer.errors})
+#         return Response({'status':'failed','errors': serializer.errors})

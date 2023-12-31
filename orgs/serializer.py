@@ -71,9 +71,14 @@ class ComplexOrganizationSerialzer(serializers.ModelSerializer):
     # organizationservice_set = ComplexOrganizationServiceSerialzer(many = True)
     class Meta:
         model = Organization
-        fields = ('id','name','org_type','order_status','note','expected_date',"admin_note","engineer_note","order_stage"
+        fields = ('id','name','org_type','order_status','note','expected_date',"order_stage"
                   ,'organizationemployee_set' ,'organizationservice_set','geolocation_set','image_url')
         depth = 1
+
+class SimpleOrganizationSerialzer(serializers.ModelSerializer):
+    class Meta:
+        model = Organization
+        fields = ('id','name',)
 
 from django.core.files import File
 import base64
@@ -115,7 +120,7 @@ class OrganizationForReviewSerialzer(serializers.ModelSerializer):
     organizationvisit_set = serializers.SerializerMethodField(source='get_organizationvisit_set')
     class Meta:
         model = Organization
-        fields = ('id','name','org_type','order_status','note','expected_date',"admin_note","engineer_note","order_stage"
+        fields = ('id','name','org_type','order_status','note','expected_date',"order_stage"
                   ,'organizationvisit_set','geolocation_set')
         depth = 1
     def get_organizationvisit_set(self, obj):
