@@ -81,6 +81,7 @@ class ServiceSectionEmployee(models.Model):
 
 class ProjectSetting(models.Model):
     days_before_contract = models.IntegerField(null = False ,verbose_name=_("days before contract") )
+    
     class Meta:
         managed = True
         verbose_name = _('Project Setting')

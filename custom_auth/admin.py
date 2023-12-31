@@ -6,6 +6,7 @@ class UserAccountAdmin(admin.ModelAdmin):
     list_display = ("id",'first_name','second_name','third_name','fourth_name' ,'last_name','email', 'mobile' ,'username' ,'type')
     list_filter = ("id",'first_name','second_name','third_name','fourth_name' ,'last_name','email', 'mobile' ,'username' ,'type')
     search_fields = ("id",'first_name','second_name','third_name','fourth_name' ,'last_name','email', 'mobile' ,'username' ,'type')
+    exclude = ('second_name','third_name','fourth_name' ,'last_name','email','mobile' ,)
 
 
 class UserTypeAdmin(admin.ModelAdmin):    

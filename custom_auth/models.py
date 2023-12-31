@@ -27,7 +27,7 @@ class UserAccount(models.Model):
     second_name = models.CharField(max_length=100,verbose_name=_('second name'), blank=True, )
     third_name = models.CharField(max_length=100,verbose_name=_('third name'), blank=True, )
     fourth_name = models.CharField(max_length=100,verbose_name=_('fourth name'), blank=True, )
-    last_name = models.CharField(max_length=100,verbose_name=_('last name')  )
+    last_name = models.CharField(max_length=100,verbose_name=_('last name') , blank=True,  )
     email = models.CharField(max_length=100,verbose_name=_('email'), blank=True, )
     mobile = models.CharField(max_length=100,verbose_name=_('mobile'))
     username = models.CharField(max_length=100,verbose_name=_('username'))

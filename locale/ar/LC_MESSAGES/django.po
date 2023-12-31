@@ -322,7 +322,7 @@ msgstr "تم الزيارة؟"
 
 #: .\orgs\models.py:97
 msgid "Organization Service"
-msgstr "نوع الخدمة"
+msgstr "خدمة المنشأة"
 
 #: .\orgs\models.py:98
 msgid "Organization Services"

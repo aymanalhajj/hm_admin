@@ -201,21 +201,39 @@ def download_organization_image(request):
     else:
         return Response({'status':'failed','message': 'organization id not passed'})
 
+import datetime
+from datetime import date
+from django.db.models import Count, F, Value
+from app_settings.models import ProjectSetting
+
 @api_view(['GET']) 
 def get_organizations_for_visit(request):
+    settings = ProjectSetting.objects.first()
+    days_before_contract = settings.days_before_contract
+    from_date = date.today() - datetime.timedelta(days=360)
+    to_date = date.today() + datetime.timedelta(days=days_before_contract)
+
+    # convert string to date object
+    # d1 = datetime.strptime(str_d1, "%Y-%m-%d")
+    # d2 = datetime.strptime(str_d2, "%Y-%m-%d")
+
+    # # difference between dates in timedelta
+    delta = to_date - from_date
+    print(f'Difference is {delta.days} days')
+    
     auth_status = JWTAuthentication.authenticate(request)
     if auth_status['status'] != 'succeed':
         return Response(auth_status,401)
     manager_user = ServiceSection.objects.filter(section_manager = auth_status['user_id'])
     if manager_user.count()>0:
-        objects = Organization.objects.filter( id__in = Subquery(OrganizationService.objects.filter(is_visited = 0, service_section__in = Subquery(manager_user.values('id'))).values('organization')))
+        objects = Organization.objects.filter( id__in = Subquery(OrganizationService.objects.filter(is_visited = 0, service_section__in = Subquery(manager_user.values('id'))).values('organization'))).filter(Q(order_status_id=1) | Q(order_status_id=2) & Q(expected_date__range=(from_date,to_date)))
         serializer = ComplexOrganizationSerialzer(objects, many = True)
         services = OrganizationService.objects.filter(is_visited = 0,service_section__in = Subquery(manager_user.values('id')))
         service_serializer =  OrganizationServiceSerialzer(services,many = True)
         return Response({"orgs":serializer.data,"authorized_services" : service_serializer.data })
     section_employees = ServiceSectionEmployee.objects.filter(employee = auth_status['user_id'])
     if section_employees.count()>0:
-        objects = Organization.objects.filter(id__in = RawSQL("select organization_id from orgs_organizationservice where is_visited = 0 and ( service_section_id, service_type_id) in %s ",[list(section_employees.values_list("service_section","service_type"))])) 
+        objects = Organization.objects.filter(id__in = RawSQL("select organization_id from orgs_organizationservice where is_visited = 0 and ( service_section_id, service_type_id) in %s ",[list(section_employees.values_list("service_section","service_type"))])).filter(Q(order_status_id=1) | Q(order_status_id=2) & Q(expected_date__range=(from_date,to_date))) 
         serializer = ComplexOrganizationSerialzer(objects, many = True)
         services = OrganizationService.objects.raw("select * from orgs_organizationservice where is_visited = 0 and ( service_section_id, service_type_id) in %s ",[list(section_employees.values_list("service_section","service_type"))])
         service_serializer =  OrganizationServiceSerialzer(services,many = True)
@@ -236,7 +254,6 @@ def get_organizations_for_review(request):
         # service_serializer =  OrganizationServiceSerialzer(services,many = True)
         return Response(serializer.data)
     return Response([])
-
 
 
 # @api_view(['GET']) 

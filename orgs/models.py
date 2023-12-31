@@ -70,6 +70,8 @@ class OrganizationVisit(models.Model):
     reviewer = models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("reviewer") ,related_name="org_reviewer", default= None, null= True)
     review_note =  models.CharField(max_length= 100 ,null = False, blank=True ,verbose_name=_("review note") )
     created_date = models.DateField(null= True,verbose_name=_("created date"),default=  timezone.now)
+    def __str__(self) -> str:
+        return str(self.id)
     class Meta:
         managed = True
         verbose_name = _('Organization Visit')
@@ -92,8 +94,10 @@ class OrganizationService(models.Model):
     service_section = models.ForeignKey(ServiceSection,on_delete=models.CASCADE,verbose_name=_("service section") )
     service_type = models.ForeignKey(ServiceType,on_delete=models.CASCADE,verbose_name=_("service type") )
     organization = models.ForeignKey(Organization,on_delete=models.CASCADE,verbose_name=_("organization") )
-    is_visited = models.IntegerField(default=0, verbose_name=_("is visited"))
+    is_visited = models.IntegerField(default=0,choices=YES_NO, verbose_name=_("is visited"))
     created_date = models.DateField(null= True,verbose_name=_("created date"),default=  timezone.now)
+    def __str__(self) -> str:
+        return str(self.id)
     class Meta:
         managed = True
         verbose_name = _('Organization Service')
