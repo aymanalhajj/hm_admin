@@ -3,8 +3,16 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from orgs.serializer import *
 
+import logging
+# Create a logger for this file
+logger = logging.getLogger(__file__)
+# logger.debug("This logs a debug message.")
+
+
 @api_view(['GET']) 
 def get_org_types(request):
+    logger.info("get_org_types")
+    raise Exception("This is a handled exception")
     objects = OrganizationType.objects.all()
     serializer = OrganizationTypeSerialzer(objects, many = True)
     return Response(serializer.data)

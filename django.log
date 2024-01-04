@@ -1,0 +1,240 @@
+2024-01-04 13:24:46 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:24:46 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:25:22 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:25:22 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:25:35 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-04 13:25:35 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-04 13:26:54 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-04 13:26:54 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-04 13:27:47 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:27:47 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:27:48 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:27:48 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:27:52 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-04 13:27:52 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-04 13:28:05 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-04 13:28:05 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-04 13:28:39 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:28:39 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:28:39 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:28:39 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:28:43 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:28:43 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:28:43 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:28:43 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:28:53 [ERROR   ] (log.log_response) Internal Server Error: /get-org-types
+Traceback (most recent call last):
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py", line 15, in get_org_types
+    raise Exception("This is a handled exception")
+Exception: This is a handled exception
+2024-01-04 13:28:53 [ERROR   ] (log.log_response) Internal Server Error: /get-org-types
+Traceback (most recent call last):
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py", line 15, in get_org_types
+    raise Exception("This is a handled exception")
+Exception: This is a handled exception
+2024-01-04 13:28:53 [ERROR   ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 500 97386
+2024-01-04 13:28:53 [ERROR   ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 500 97386
+2024-01-04 13:29:40 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:29:40 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:29:41 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:29:41 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:29:50 [ERROR   ] (log.log_response) Internal Server Error: /get-org-types
+Traceback (most recent call last):
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py", line 15, in get_org_types
+    raise Exception("This is a handled exception")
+Exception: This is a handled exception
+2024-01-04 13:29:50 [ERROR   ] (log.log_response) Internal Server Error: /get-org-types
+Traceback (most recent call last):
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py", line 15, in get_org_types
+    raise Exception("This is a handled exception")
+Exception: This is a handled exception
+2024-01-04 13:29:50 [ERROR   ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 500 97388
+2024-01-04 13:29:50 [ERROR   ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 500 97388
+2024-01-04 13:30:12 [WARNING ] (log.log_response) Unauthorized: /get-organization-list
+2024-01-04 13:30:12 [WARNING ] (log.log_response) Unauthorized: /get-organization-list
+2024-01-04 13:30:12 [WARNING ] (basehttp.log_message) "GET /get-organization-list HTTP/1.1" 401 50
+2024-01-04 13:30:12 [WARNING ] (basehttp.log_message) "GET /get-organization-list HTTP/1.1" 401 50
+2024-01-04 13:30:58 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\hm_admin\settings.py changed, reloading.
+2024-01-04 13:30:58 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\hm_admin\settings.py changed, reloading.
+2024-01-04 13:32:00 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:32:00 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:32:07 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-04 13:32:07 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-04 13:32:38 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:32:38 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:32:38 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:32:38 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:32:46 [INFO    ] (views.get_org_types) get_org_types
+2024-01-04 13:32:46 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-04 13:32:46 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-04 13:33:23 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:33:23 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:33:24 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:33:24 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:33:43 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:33:43 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-04 13:33:44 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:33:44 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-04 13:33:51 [INFO    ] (views.get_org_types) get_org_types
+2024-01-04 13:33:51 [ERROR   ] (log.log_response) Internal Server Error: /get-org-types
+Traceback (most recent call last):
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py", line 15, in get_org_types
+    raise Exception("This is a handled exception")
+Exception: This is a handled exception
+2024-01-04 13:33:51 [ERROR   ] (log.log_response) Internal Server Error: /get-org-types
+Traceback (most recent call last):
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py", line 15, in get_org_types
+    raise Exception("This is a handled exception")
+Exception: This is a handled exception
+2024-01-04 13:33:51 [ERROR   ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 500 97383
+2024-01-04 13:33:51 [ERROR   ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 500 97383

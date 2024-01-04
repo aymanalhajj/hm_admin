@@ -9,9 +9,14 @@ from .models import *
 from custom_auth.models import JWTAuthentication
 from django.db.models import Subquery, OuterRef,Q
 from django.db.models.expressions import RawSQL
-import operator
-import functools
-
+import logging
+# Create a logger for this file
+logger = logging.getLogger(__file__)
+# logger.debug("This logs a debug message.")
+# logger.info("This logs an info message.")
+# logger.warn("This logs a warning message.")
+# logger.error("This logs an error message.")
+# logger.exception("This logs an exception.")
 
 @api_view(['POST'])
 def create_organization_with_location(request):
@@ -22,7 +27,6 @@ def create_organization_with_location(request):
     serializer = OrganizationWithLocationSerialzer(data = request.data)
     if serializer.is_valid():
         data = serializer.validated_data
-        print(data)
         organization = Organization.objects.create(name = data.get("name"),
                                                    org_type= data.get("org_type"),
                                                    order_status=data.get("order_status"),
