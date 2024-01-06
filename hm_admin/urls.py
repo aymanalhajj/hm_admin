@@ -16,3 +16,11 @@ urlpatterns += [
     path('', include('orgs.urls')),
     path('auth/', include('custom_auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+admin.site.headers = "هامة المدن"
+admin.site.site_header = "هامة المدن"
+admin.site.site_title = "هامة المدن"
+admin.site.index_title = "هامة المدن"
+admin.site.name = "هامة المدن"
+admin.site.su = "هامة المدن"
