@@ -57,13 +57,15 @@ class Organization(models.Model):
         managed = True
         verbose_name = _('Organization')
         verbose_name_plural = _('Organizations')
+        ordering = ['expected_date']
 
-
+from app_settings.models import VisitStatus
 class OrganizationVisit(models.Model):
     organization = models.ForeignKey(Organization,on_delete=models.CASCADE,verbose_name=_("organization") )
     service_section = models.ForeignKey(ServiceSection,on_delete=models.CASCADE,verbose_name=_("service section") )
     service_type = models.ForeignKey(ServiceType,on_delete=models.CASCADE,verbose_name=_("service type") )
-    visit_state = models.IntegerField(default=0,choices=VISIT_STATE ,verbose_name=_("visit state") )
+    # visit_state = models.IntegerField(default=0,choices=VISIT_STATE ,verbose_name=_("visit state") )
+    visit_state = models.ForeignKey(VisitStatus,on_delete=models.CASCADE,verbose_name=_("visit state") )
     visit_note =  models.CharField(max_length= 100 ,null = False, blank=True ,verbose_name=_("visit note") )
     visitor = models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("visitor") ,related_name="org_visitor", default= None, null= True)
     is_reviewed = models.IntegerField(default=0,choices=YES_NO,verbose_name=_("is reviewed") )

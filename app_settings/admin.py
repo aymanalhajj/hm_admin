@@ -53,6 +53,14 @@ class VisitStatusAdmin(admin.ModelAdmin):
 
 @admin.register(ProjectSetting)
 class ProjectSettingAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        if ProjectSetting.objects.all().count() > 0 :
+            return ("add" in request.path or "change" in request.path)
+        else :
+            return ("add")
+    # This will help you to disable delete functionaliyt
+    def has_delete_permission(self, request, obj=None):
+        return False
     list_display = ("id","days_before_contract")
     list_filter = ("id","days_before_contract")
     search_fields = ("days_before_contract",)

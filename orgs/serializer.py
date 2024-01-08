@@ -127,31 +127,31 @@ class OrganizationForReviewSerialzer(serializers.ModelSerializer):
         return DeepVisitSerializer(obj.organizationvisit_set.filter(is_reviewed = 0),many =True).data
         # return DeepVisitSerializer(obj.organizationvisit_set.all(),many =True).data
 
-class OrganizationTypeSerialzer(serializers.ModelSerializer):
-    class Meta:
-        model = OrganizationType
-        fields = "__all__"
+# class OrganizationTypeSerialzer(serializers.ModelSerializer):
+#     class Meta:
+#         model = OrganizationType
+#         fields = "__all__"
 
-class OrderStatusSerialzer(serializers.ModelSerializer):
-    class Meta:
-        model = OrderStatus
-        fields = "__all__"
-
-
-class EmployeeRoleSerialzer(serializers.ModelSerializer):
-    class Meta:
-        model = EmployeeRole
-        fields = "__all__"
+# class OrderStatusSerialzer(serializers.ModelSerializer):
+#     class Meta:
+#         model = OrderStatus
+#         fields = "__all__"
 
 
-class ServiceTypeSerialzer(serializers.ModelSerializer):
-    class Meta:
-        model = ServiceType
-        fields = "__all__"
+# class EmployeeRoleSerialzer(serializers.ModelSerializer):
+#     class Meta:
+#         model = EmployeeRole
+#         fields = "__all__"
 
 
-class ServiceSectionSerialzer(serializers.ModelSerializer):
-    class Meta:
-        model = ServiceSection
-        fields = "__all__"
+# class ServiceTypeSerialzer(serializers.ModelSerializer):
+#     class Meta:
+#         model = ServiceType
+#         fields = "__all__"
+
+
+# class ServiceSectionSerialzer(serializers.ModelSerializer):
+#     class Meta:
+#         model = ServiceSection
+#         fields = "__all__"
 

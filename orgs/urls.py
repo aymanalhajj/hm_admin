@@ -1,8 +1,8 @@
 from django.urls import path,include
 
 from . import views
-from app_settings.views import get_org_types,get_order_status,get_emp_roles,get_service_types,get_service_sections
-
+from app_settings.views import get_org_types,get_order_status,get_emp_roles,get_service_types,get_service_sections,get_order_stages
+from app_settings.views import get_visit_status
 urlpatterns= [
     
     path('create-organization', views.create_organization_with_location),
@@ -26,8 +26,10 @@ urlpatterns= [
     # path('get-org-emps', views.get_org_emps_all),
     # path('get-org-services', views.get_org_service_all),
 
+    path('get-order-stages', get_order_stages),
     path('get-org-types', get_org_types),
     path('get-order-status', get_order_status),
+    path('get-visit-status', get_visit_status),
     path('get-emp-roles', get_emp_roles),
     path('get-service-types', get_service_types),
     path('get-service-sections', get_service_sections),

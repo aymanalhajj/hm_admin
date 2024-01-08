@@ -384,3 +384,452 @@ Exception: This is a handled exception
 2024-01-06 14:36:12 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/ HTTP/1.1" 302 0
 2024-01-06 14:36:12 [INFO    ] (basehttp.log_message) "GET /ar/admin/login/?next=/ar/admin/app_settings/projectsetting/ HTTP/1.1" 200 4760
 2024-01-06 14:36:12 [INFO    ] (basehttp.log_message) "GET /ar/admin/login/?next=/ar/admin/app_settings/projectsetting/ HTTP/1.1" 200 4760
+2024-01-08 13:46:16 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 13:46:16 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 13:46:47 [WARNING ] (log.log_response) Not Found: /en
+2024-01-08 13:46:47 [WARNING ] (log.log_response) Not Found: /en
+2024-01-08 13:46:47 [WARNING ] (basehttp.log_message) "GET /en HTTP/1.1" 404 5409
+2024-01-08 13:46:47 [WARNING ] (basehttp.log_message) "GET /en HTTP/1.1" 404 5409
+2024-01-08 13:46:53 [INFO    ] (basehttp.log_message) "GET /en/admin/ HTTP/1.1" 302 0
+2024-01-08 13:46:53 [INFO    ] (basehttp.log_message) "GET /en/admin/ HTTP/1.1" 302 0
+2024-01-08 13:46:53 [INFO    ] (basehttp.log_message) "GET /en/admin/login/?next=/en/admin/ HTTP/1.1" 200 4549
+2024-01-08 13:46:53 [INFO    ] (basehttp.log_message) "GET /en/admin/login/?next=/en/admin/ HTTP/1.1" 200 4549
+2024-01-08 13:47:02 [INFO    ] (basehttp.log_message) "POST /en/admin/login/?next=/en/admin/ HTTP/1.1" 302 0
+2024-01-08 13:47:02 [INFO    ] (basehttp.log_message) "POST /en/admin/login/?next=/en/admin/ HTTP/1.1" 302 0
+2024-01-08 13:47:02 [INFO    ] (basehttp.log_message) "GET /en/admin/ HTTP/1.1" 200 18204
+2024-01-08 13:47:02 [INFO    ] (basehttp.log_message) "GET /en/admin/ HTTP/1.1" 200 18204
+2024-01-08 13:47:08 [INFO    ] (basehttp.log_message) "POST /i18n/setlang/ HTTP/1.1" 302 0
+2024-01-08 13:47:08 [INFO    ] (basehttp.log_message) "POST /i18n/setlang/ HTTP/1.1" 302 0
+2024-01-08 13:47:08 [INFO    ] (basehttp.log_message) "GET /en/admin/ HTTP/1.1" 200 18204
+2024-01-08 13:47:08 [INFO    ] (basehttp.log_message) "GET /en/admin/ HTTP/1.1" 200 18204
+2024-01-08 13:47:11 [INFO    ] (basehttp.log_message) "POST /i18n/setlang/ HTTP/1.1" 302 0
+2024-01-08 13:47:11 [INFO    ] (basehttp.log_message) "POST /i18n/setlang/ HTTP/1.1" 302 0
+2024-01-08 13:47:11 [INFO    ] (basehttp.log_message) "GET /en/admin/ HTTP/1.1" 200 18204
+2024-01-08 13:47:11 [INFO    ] (basehttp.log_message) "GET /en/admin/ HTTP/1.1" 200 18204
+2024-01-08 13:47:18 [INFO    ] (basehttp.log_message) "GET /ar/admin/ HTTP/1.1" 200 18798
+2024-01-08 13:47:18 [INFO    ] (basehttp.log_message) "GET /ar/admin/ HTTP/1.1" 200 18798
+2024-01-08 13:47:24 [INFO    ] (basehttp.log_message) "POST /i18n/setlang/ HTTP/1.1" 302 0
+2024-01-08 13:47:24 [INFO    ] (basehttp.log_message) "POST /i18n/setlang/ HTTP/1.1" 302 0
+2024-01-08 13:47:24 [INFO    ] (basehttp.log_message) "GET /en/admin/ HTTP/1.1" 200 18204
+2024-01-08 13:47:24 [INFO    ] (basehttp.log_message) "GET /en/admin/ HTTP/1.1" 200 18204
+2024-01-08 13:47:27 [INFO    ] (basehttp.log_message) "POST /i18n/setlang/ HTTP/1.1" 302 0
+2024-01-08 13:47:27 [INFO    ] (basehttp.log_message) "POST /i18n/setlang/ HTTP/1.1" 302 0
+2024-01-08 13:47:27 [INFO    ] (basehttp.log_message) "GET /ar/admin/ HTTP/1.1" 200 18798
+2024-01-08 13:47:27 [INFO    ] (basehttp.log_message) "GET /ar/admin/ HTTP/1.1" 200 18798
+2024-01-08 13:47:40 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/ HTTP/1.1" 200 16262
+2024-01-08 13:47:40 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/ HTTP/1.1" 200 16262
+2024-01-08 13:47:47 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/1/change/ HTTP/1.1" 200 15977
+2024-01-08 13:47:47 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/1/change/ HTTP/1.1" 200 15977
+2024-01-08 13:47:47 [INFO    ] (basehttp.log_message) "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+2024-01-08 13:47:47 [INFO    ] (basehttp.log_message) "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+2024-01-08 13:47:47 [INFO    ] (basehttp.log_message) "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+2024-01-08 13:47:47 [INFO    ] (basehttp.log_message) "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+2024-01-08 13:47:47 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:47:47 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:47:59 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\admin.py changed, reloading.
+2024-01-08 13:47:59 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\admin.py changed, reloading.
+2024-01-08 13:47:59 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 13:47:59 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 13:48:05 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/1/change/ HTTP/1.1" 200 16077
+2024-01-08 13:48:05 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/1/change/ HTTP/1.1" 200 16077
+2024-01-08 13:48:05 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:48:05 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:48:15 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/ HTTP/1.1" 200 17404
+2024-01-08 13:48:15 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/ HTTP/1.1" 200 17404
+2024-01-08 13:48:15 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:48:15 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:48:24 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/add/ HTTP/1.1" 200 15795
+2024-01-08 13:48:24 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/add/ HTTP/1.1" 200 15795
+2024-01-08 13:48:24 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:48:24 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:48:30 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\admin.py changed, reloading.
+2024-01-08 13:48:30 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\admin.py changed, reloading.
+2024-01-08 13:48:31 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 13:48:31 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 13:48:47 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/ HTTP/1.1" 200 16262
+2024-01-08 13:48:47 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/ HTTP/1.1" 200 16262
+2024-01-08 13:48:50 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/1/change/ HTTP/1.1" 200 15977
+2024-01-08 13:48:50 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/1/change/ HTTP/1.1" 200 15977
+2024-01-08 13:48:50 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:48:50 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:48:53 [INFO    ] (basehttp.log_message) "POST /ar/admin/app_settings/projectsetting/1/change/ HTTP/1.1" 302 0
+2024-01-08 13:48:53 [INFO    ] (basehttp.log_message) "POST /ar/admin/app_settings/projectsetting/1/change/ HTTP/1.1" 302 0
+2024-01-08 13:48:53 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/add/ HTTP/1.1" 200 16108
+2024-01-08 13:48:53 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/add/ HTTP/1.1" 200 16108
+2024-01-08 13:48:53 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:48:53 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:48:53 [INFO    ] (basehttp.log_message) "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+2024-01-08 13:48:53 [INFO    ] (basehttp.log_message) "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+2024-01-08 13:48:56 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/ HTTP/1.1" 200 16262
+2024-01-08 13:48:56 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/projectsetting/ HTTP/1.1" 200 16262
+2024-01-08 13:51:13 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 18522
+2024-01-08 13:51:13 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 18522
+2024-01-08 13:51:13 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:51:13 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:52:00 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\admin.py changed, reloading.
+2024-01-08 13:52:00 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\admin.py changed, reloading.
+2024-01-08 13:52:01 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 13:52:01 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 13:52:06 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 19011
+2024-01-08 13:52:06 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 19011
+2024-01-08 13:52:06 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 13:52:06 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:04:27 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/add/ HTTP/1.1" 200 22765
+2024-01-08 14:04:27 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/add/ HTTP/1.1" 200 22765
+2024-01-08 14:04:27 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:04:27 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:04:27 [INFO    ] (basehttp.log_message) "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+2024-01-08 14:04:27 [INFO    ] (basehttp.log_message) "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+2024-01-08 14:04:30 [INFO    ] (basehttp.log_message) "POST /ar/admin/orgs/organization/add/ HTTP/1.1" 200 22914
+2024-01-08 14:04:30 [INFO    ] (basehttp.log_message) "POST /ar/admin/orgs/organization/add/ HTTP/1.1" 200 22914
+2024-01-08 14:04:30 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:04:30 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:04:40 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 19011
+2024-01-08 14:04:40 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 19011
+2024-01-08 14:04:40 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:04:40 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:04:57 [WARNING ] (log.log_response) Unauthorized: /create-organization
+2024-01-08 14:04:57 [WARNING ] (log.log_response) Unauthorized: /create-organization
+2024-01-08 14:04:57 [WARNING ] (basehttp.log_message) "POST /create-organization HTTP/1.1" 401 50
+2024-01-08 14:04:57 [WARNING ] (basehttp.log_message) "POST /create-organization HTTP/1.1" 401 50
+2024-01-08 14:05:04 [INFO    ] (basehttp.log_message) "POST /auth/get-token HTTP/1.1" 200 320
+2024-01-08 14:05:04 [INFO    ] (basehttp.log_message) "POST /auth/get-token HTTP/1.1" 200 320
+2024-01-08 14:05:14 [INFO    ] (basehttp.log_message) "POST /auth/get-token HTTP/1.1" 200 311
+2024-01-08 14:05:14 [INFO    ] (basehttp.log_message) "POST /auth/get-token HTTP/1.1" 200 311
+2024-01-08 14:05:29 [INFO    ] (basehttp.log_message) "POST /create-organization HTTP/1.1" 200 75
+2024-01-08 14:05:29 [INFO    ] (basehttp.log_message) "POST /create-organization HTTP/1.1" 200 75
+2024-01-08 14:05:35 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 21867
+2024-01-08 14:05:35 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 21867
+2024-01-08 14:05:35 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:05:35 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:05:52 [INFO    ] (basehttp.log_message) "POST /create-organization HTTP/1.1" 200 75
+2024-01-08 14:05:52 [INFO    ] (basehttp.log_message) "POST /create-organization HTTP/1.1" 200 75
+2024-01-08 14:05:55 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 22630
+2024-01-08 14:05:55 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 22630
+2024-01-08 14:05:55 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:05:55 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:06:17 [INFO    ] (basehttp.log_message) "POST /create-organization HTTP/1.1" 200 75
+2024-01-08 14:06:17 [INFO    ] (basehttp.log_message) "POST /create-organization HTTP/1.1" 200 75
+2024-01-08 14:06:24 [INFO    ] (basehttp.log_message) "POST /create-organization HTTP/1.1" 200 75
+2024-01-08 14:06:24 [INFO    ] (basehttp.log_message) "POST /create-organization HTTP/1.1" 200 75
+2024-01-08 14:06:29 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 24154
+2024-01-08 14:06:29 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 24154
+2024-01-08 14:06:29 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:06:29 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:07:56 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\models.py changed, reloading.
+2024-01-08 14:07:56 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\models.py changed, reloading.
+2024-01-08 14:07:57 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:07:57 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:08:12 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 24412
+2024-01-08 14:08:12 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 24412
+2024-01-08 14:08:12 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:08:12 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:08:12 [INFO    ] (basehttp.log_message) "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+2024-01-08 14:08:12 [INFO    ] (basehttp.log_message) "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+2024-01-08 14:08:56 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationservice/ HTTP/1.1" 200 16826
+2024-01-08 14:08:56 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationservice/ HTTP/1.1" 200 16826
+2024-01-08 14:08:56 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:08:56 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:09:00 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationemployee/ HTTP/1.1" 200 16747
+2024-01-08 14:09:00 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationemployee/ HTTP/1.1" 200 16747
+2024-01-08 14:09:00 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:09:00 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:09:17 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 24412
+2024-01-08 14:09:17 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 24412
+2024-01-08 14:09:17 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:09:17 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:10:41 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationservice/ HTTP/1.1" 200 16826
+2024-01-08 14:10:41 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationservice/ HTTP/1.1" 200 16826
+2024-01-08 14:10:42 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:10:42 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:10:44 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationservice/add/ HTTP/1.1" 200 17993
+2024-01-08 14:10:44 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationservice/add/ HTTP/1.1" 200 17993
+2024-01-08 14:10:44 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:10:44 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 14:12:21 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-08 14:12:21 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-08 14:12:22 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:12:22 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:13:18 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\serializer.py changed, reloading.
+2024-01-08 14:13:18 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\serializer.py changed, reloading.
+2024-01-08 14:13:19 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:13:19 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:14:24 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-08 14:14:24 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-08 14:14:25 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:14:25 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:17:34 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-08 14:17:34 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-08 14:17:34 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:17:34 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:18:08 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\serializer.py changed, reloading.
+2024-01-08 14:18:08 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\serializer.py changed, reloading.
+2024-01-08 14:18:09 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:18:09 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:19:02 [INFO    ] (views.get_org_types) get_org_types
+2024-01-08 14:19:02 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-08 14:19:02 [INFO    ] (basehttp.log_message) "GET /get-org-types HTTP/1.1" 200 127
+2024-01-08 14:19:06 [INFO    ] (basehttp.log_message) "GET /get-order-status HTTP/1.1" 200 108
+2024-01-08 14:19:06 [INFO    ] (basehttp.log_message) "GET /get-order-status HTTP/1.1" 200 108
+2024-01-08 14:19:11 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 14:19:11 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 14:19:15 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 14:19:15 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 14:19:26 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 14:19:26 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 14:23:35 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\urls.py changed, reloading.
+2024-01-08 14:23:35 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\urls.py changed, reloading.
+2024-01-08 14:23:36 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:23:36 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:23:40 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\urls.py changed, reloading.
+2024-01-08 14:23:40 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\urls.py changed, reloading.
+2024-01-08 14:23:41 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:23:41 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:23:56 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-08 14:23:56 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-08 14:23:57 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:23:57 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:24:31 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\urls.py changed, reloading.
+2024-01-08 14:24:31 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\urls.py changed, reloading.
+2024-01-08 14:24:31 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:24:31 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:25:06 [INFO    ] (basehttp.log_message) "GET /get-order-stages HTTP/1.1" 200 88
+2024-01-08 14:25:06 [INFO    ] (basehttp.log_message) "GET /get-order-stages HTTP/1.1" 200 88
+2024-01-08 14:26:57 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-08 14:26:57 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\views.py changed, reloading.
+2024-01-08 14:26:58 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:26:58 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:27:29 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\serializer.py changed, reloading.
+2024-01-08 14:27:29 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\app_settings\serializer.py changed, reloading.
+2024-01-08 14:27:30 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:27:30 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:29:21 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\urls.py changed, reloading.
+2024-01-08 14:29:21 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\urls.py changed, reloading.
+2024-01-08 14:29:22 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:29:22 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 14:30:21 [INFO    ] (basehttp.log_message) "GET /get-visit-status HTTP/1.1" 200 84
+2024-01-08 14:30:21 [INFO    ] (basehttp.log_message) "GET /get-visit-status HTTP/1.1" 200 84
+2024-01-08 15:17:39 [INFO    ] (basehttp.log_message) "GET /auth/validate-token HTTP/1.1" 200 63
+2024-01-08 15:17:39 [INFO    ] (basehttp.log_message) "GET /auth/validate-token HTTP/1.1" 200 63
+2024-01-08 15:17:39 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 2
+2024-01-08 15:17:39 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 2
+2024-01-08 15:17:59 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:17:59 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:17:59 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:17:59 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:17:59 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:17:59 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:17:59 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 36
+2024-01-08 15:17:59 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 36
+2024-01-08 15:18:33 [INFO    ] (basehttp.log_message) "GET /auth/validate-token HTTP/1.1" 200 63
+2024-01-08 15:18:33 [INFO    ] (basehttp.log_message) "GET /auth/validate-token HTTP/1.1" 200 63
+2024-01-08 15:18:33 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 2
+2024-01-08 15:18:33 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 2
+2024-01-08 15:18:36 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:18:36 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:18:36 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:18:36 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:18:36 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:18:36 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:18:36 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 36
+2024-01-08 15:18:36 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 36
+2024-01-08 15:18:56 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 24412
+2024-01-08 15:18:56 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 24412
+2024-01-08 15:18:56 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:18:56 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:18:59 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/6/change/ HTTP/1.1" 200 23192
+2024-01-08 15:18:59 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/6/change/ HTTP/1.1" 200 23192
+2024-01-08 15:18:59 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:18:59 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:19:08 [INFO    ] (basehttp.log_message) "POST /ar/admin/orgs/organization/6/change/ HTTP/1.1" 302 0
+2024-01-08 15:19:08 [INFO    ] (basehttp.log_message) "POST /ar/admin/orgs/organization/6/change/ HTTP/1.1" 302 0
+2024-01-08 15:19:08 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 24634
+2024-01-08 15:19:08 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 24634
+2024-01-08 15:19:08 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:19:08 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:19:13 [INFO    ] (basehttp.log_message) "GET /auth/validate-token HTTP/1.1" 200 63
+2024-01-08 15:19:13 [INFO    ] (basehttp.log_message) "GET /auth/validate-token HTTP/1.1" 200 63
+2024-01-08 15:19:13 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 2
+2024-01-08 15:19:13 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 2
+2024-01-08 15:19:15 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:19:15 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:19:15 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:19:15 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:19:15 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:19:15 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:19:15 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 36
+2024-01-08 15:19:15 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 36
+2024-01-08 15:19:23 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationservice/ HTTP/1.1" 200 16826
+2024-01-08 15:19:23 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationservice/ HTTP/1.1" 200 16826
+2024-01-08 15:19:23 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:19:23 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:19:25 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationservice/add/ HTTP/1.1" 200 17993
+2024-01-08 15:19:25 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationservice/add/ HTTP/1.1" 200 17993
+2024-01-08 15:19:25 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:19:25 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:19:32 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 24412
+2024-01-08 15:19:32 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/ HTTP/1.1" 200 24412
+2024-01-08 15:19:32 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:19:32 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:19:34 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/6/change/ HTTP/1.1" 200 23192
+2024-01-08 15:19:34 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organization/6/change/ HTTP/1.1" 200 23192
+2024-01-08 15:19:34 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:19:34 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:19:47 [INFO    ] (basehttp.log_message) "POST /auth/get-token HTTP/1.1" 200 311
+2024-01-08 15:19:47 [INFO    ] (basehttp.log_message) "POST /auth/get-token HTTP/1.1" 200 311
+2024-01-08 15:19:47 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:19:47 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:19:47 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:19:47 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:19:47 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:19:47 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:19:47 [INFO    ] (basehttp.log_message) "GET /get-organization-list HTTP/1.1" 200 115
+2024-01-08 15:19:47 [INFO    ] (basehttp.log_message) "GET /get-organization-list HTTP/1.1" 200 115
+2024-01-08 15:19:50 [INFO    ] (basehttp.log_message) "GET /get-organization HTTP/1.1" 200 514
+2024-01-08 15:19:50 [INFO    ] (basehttp.log_message) "GET /get-organization HTTP/1.1" 200 514
+2024-01-08 15:19:52 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:19:52 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:19:52 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:19:52 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:19:56 [INFO    ] (basehttp.log_message) "POST /create-org-service HTTP/1.1" 200 74
+2024-01-08 15:19:56 [INFO    ] (basehttp.log_message) "POST /create-org-service HTTP/1.1" 200 74
+2024-01-08 15:19:56 [INFO    ] (basehttp.log_message) "GET /get-organization HTTP/1.1" 200 619
+2024-01-08 15:19:56 [INFO    ] (basehttp.log_message) "GET /get-organization HTTP/1.1" 200 619
+2024-01-08 15:19:59 [INFO    ] (basehttp.log_message) "GET /get-organization HTTP/1.1" 200 514
+2024-01-08 15:19:59 [INFO    ] (basehttp.log_message) "GET /get-organization HTTP/1.1" 200 514
+2024-01-08 15:20:01 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:01 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:01 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:01 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:05 [INFO    ] (basehttp.log_message) "POST /create-org-service HTTP/1.1" 200 74
+2024-01-08 15:20:05 [INFO    ] (basehttp.log_message) "POST /create-org-service HTTP/1.1" 200 74
+2024-01-08 15:20:05 [INFO    ] (basehttp.log_message) "GET /get-organization HTTP/1.1" 200 619
+2024-01-08 15:20:05 [INFO    ] (basehttp.log_message) "GET /get-organization HTTP/1.1" 200 619
+2024-01-08 15:20:07 [INFO    ] (basehttp.log_message) "GET /get-organization HTTP/1.1" 200 514
+2024-01-08 15:20:07 [INFO    ] (basehttp.log_message) "GET /get-organization HTTP/1.1" 200 514
+2024-01-08 15:20:09 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:09 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:09 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:09 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:12 [INFO    ] (basehttp.log_message) "POST /create-org-service HTTP/1.1" 200 74
+2024-01-08 15:20:12 [INFO    ] (basehttp.log_message) "POST /create-org-service HTTP/1.1" 200 74
+2024-01-08 15:20:12 [INFO    ] (basehttp.log_message) "GET /get-organization HTTP/1.1" 200 619
+2024-01-08 15:20:12 [INFO    ] (basehttp.log_message) "GET /get-organization HTTP/1.1" 200 619
+2024-01-08 15:20:16 [INFO    ] (basehttp.log_message) "POST /submit-organization-for-study HTTP/1.1" 200 67
+2024-01-08 15:20:16 [INFO    ] (basehttp.log_message) "POST /submit-organization-for-study HTTP/1.1" 200 67
+2024-01-08 15:20:16 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:16 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:16 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:16 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:16 [INFO    ] (basehttp.log_message) "GET /get-organization-list HTTP/1.1" 200 77
+2024-01-08 15:20:16 [INFO    ] (basehttp.log_message) "GET /get-organization-list HTTP/1.1" 200 77
+2024-01-08 15:20:16 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:20:16 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:20:21 [INFO    ] (basehttp.log_message) "POST /submit-organization-for-study HTTP/1.1" 200 67
+2024-01-08 15:20:21 [INFO    ] (basehttp.log_message) "POST /submit-organization-for-study HTTP/1.1" 200 67
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-organization-list HTTP/1.1" 200 39
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-organization-list HTTP/1.1" 200 39
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "POST /submit-organization-for-study HTTP/1.1" 200 67
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "POST /submit-organization-for-study HTTP/1.1" 200 67
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-organization-list HTTP/1.1" 200 2
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-organization-list HTTP/1.1" 200 2
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:20:22 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:20:30 [INFO    ] (basehttp.log_message) "POST /auth/get-token HTTP/1.1" 200 320
+2024-01-08 15:20:30 [INFO    ] (basehttp.log_message) "POST /auth/get-token HTTP/1.1" 200 320
+2024-01-08 15:20:31 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 2
+2024-01-08 15:20:31 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 2
+2024-01-08 15:20:32 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:20:32 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:20:32 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:32 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:32 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:32 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:32 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 2206
+2024-01-08 15:20:32 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 2206
+2024-01-08 15:20:37 [INFO    ] (basehttp.log_message) "GET /get-visit-status HTTP/1.1" 200 84
+2024-01-08 15:20:37 [INFO    ] (basehttp.log_message) "GET /get-visit-status HTTP/1.1" 200 84
+2024-01-08 15:20:48 [INFO    ] (basehttp.log_message) "POST /visit-organization HTTP/1.1" 200 208
+2024-01-08 15:20:48 [INFO    ] (basehttp.log_message) "POST /visit-organization HTTP/1.1" 200 208
+2024-01-08 15:20:48 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:48 [INFO    ] (basehttp.log_message) "GET /get-service-types HTTP/1.1" 200 88
+2024-01-08 15:20:48 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:48 [INFO    ] (basehttp.log_message) "GET /get-service-sections HTTP/1.1" 200 163
+2024-01-08 15:20:48 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:20:48 [INFO    ] (basehttp.log_message) "GET /get-emp-roles HTTP/1.1" 200 82
+2024-01-08 15:20:48 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 1482
+2024-01-08 15:20:48 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 1482
+2024-01-08 15:20:53 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationvisit/ HTTP/1.1" 200 22193
+2024-01-08 15:20:53 [INFO    ] (basehttp.log_message) "GET /ar/admin/orgs/organizationvisit/ HTTP/1.1" 200 22193
+2024-01-08 15:20:54 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:20:54 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:21:01 [INFO    ] (basehttp.log_message) "GET /auth/validate-token HTTP/1.1" 200 63
+2024-01-08 15:21:01 [INFO    ] (basehttp.log_message) "GET /auth/validate-token HTTP/1.1" 200 63
+2024-01-08 15:21:01 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 726
+2024-01-08 15:21:01 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 726
+2024-01-08 15:21:29 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/visitstatus/ HTTP/1.1" 200 17664
+2024-01-08 15:21:29 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/visitstatus/ HTTP/1.1" 200 17664
+2024-01-08 15:21:29 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:21:29 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:21:33 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/visitstatus/1/change/ HTTP/1.1" 200 15966
+2024-01-08 15:21:33 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/visitstatus/1/change/ HTTP/1.1" 200 15966
+2024-01-08 15:21:33 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:21:33 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:21:38 [INFO    ] (basehttp.log_message) "POST /ar/admin/app_settings/visitstatus/1/change/ HTTP/1.1" 302 0
+2024-01-08 15:21:38 [INFO    ] (basehttp.log_message) "POST /ar/admin/app_settings/visitstatus/1/change/ HTTP/1.1" 302 0
+2024-01-08 15:21:38 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/visitstatus/ HTTP/1.1" 200 17914
+2024-01-08 15:21:38 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/visitstatus/ HTTP/1.1" 200 17914
+2024-01-08 15:21:38 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:21:38 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:21:42 [INFO    ] (basehttp.log_message) "GET /auth/validate-token HTTP/1.1" 200 63
+2024-01-08 15:21:42 [INFO    ] (basehttp.log_message) "GET /auth/validate-token HTTP/1.1" 200 63
+2024-01-08 15:21:43 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 726
+2024-01-08 15:21:43 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 726
+2024-01-08 15:22:14 [WARNING ] (log.log_response) Unauthorized: /get-organizations-for-visit
+2024-01-08 15:22:14 [WARNING ] (log.log_response) Unauthorized: /get-organizations-for-visit
+2024-01-08 15:22:14 [WARNING ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 401 50
+2024-01-08 15:22:14 [WARNING ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 401 50
+2024-01-08 15:22:42 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 2
+2024-01-08 15:22:42 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 2
+2024-01-08 15:22:51 [INFO    ] (basehttp.log_message) "POST /auth/get-token HTTP/1.1" 200 320
+2024-01-08 15:22:51 [INFO    ] (basehttp.log_message) "POST /auth/get-token HTTP/1.1" 200 320
+2024-01-08 15:23:12 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 1482
+2024-01-08 15:23:12 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-visit HTTP/1.1" 200 1482
+2024-01-08 15:23:40 [INFO    ] (basehttp.handle_error) - Broken pipe from ('192.168.183.58', 53042)
+2024-01-08 15:23:40 [INFO    ] (basehttp.handle_error) - Broken pipe from ('192.168.183.58', 53042)
+2024-01-08 15:23:40 [INFO    ] (basehttp.handle_error) - Broken pipe from ('192.168.183.58', 53040)
+2024-01-08 15:23:40 [INFO    ] (basehttp.handle_error) - Broken pipe from ('192.168.183.58', 53040)
+2024-01-08 15:23:40 [INFO    ] (basehttp.handle_error) - Broken pipe from ('192.168.183.58', 53032)
+2024-01-08 15:23:40 [INFO    ] (basehttp.handle_error) - Broken pipe from ('192.168.183.58', 53032)
+2024-01-08 15:23:40 [INFO    ] (basehttp.handle_error) - Broken pipe from ('192.168.183.58', 53038)
+2024-01-08 15:23:40 [INFO    ] (basehttp.handle_error) - Broken pipe from ('192.168.183.58', 53038)
+2024-01-08 15:23:45 [WARNING ] (log.log_response) Unauthorized: /get-organizations-for-review
+2024-01-08 15:23:45 [WARNING ] (log.log_response) Unauthorized: /get-organizations-for-review
+2024-01-08 15:23:45 [WARNING ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 401 50
+2024-01-08 15:23:45 [WARNING ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 401 50
+2024-01-08 15:23:49 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 726
+2024-01-08 15:23:49 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 726
+2024-01-08 15:29:52 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\models.py changed, reloading.
+2024-01-08 15:29:52 [INFO    ] (autoreload.trigger_reload) D:\My-Workspace\django-projects\hm_env\hm_admin\orgs\models.py changed, reloading.
+2024-01-08 15:29:53 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 15:29:53 [INFO    ] (autoreload.run_with_reloader) Watching for file changes with StatReloader
+2024-01-08 15:30:25 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/visitstatus/ HTTP/1.1" 200 17673
+2024-01-08 15:30:25 [INFO    ] (basehttp.log_message) "GET /ar/admin/app_settings/visitstatus/ HTTP/1.1" 200 17673
+2024-01-08 15:30:25 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:30:25 [INFO    ] (basehttp.log_message) "GET /ar/admin/jsi18n/ HTTP/1.1" 200 14011
+2024-01-08 15:30:35 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 765
+2024-01-08 15:30:35 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 765
+2024-01-08 15:34:15 [INFO    ] (basehttp.log_message) "GET /auth/validate-token HTTP/1.1" 200 63
+2024-01-08 15:34:15 [INFO    ] (basehttp.log_message) "GET /auth/validate-token HTTP/1.1" 200 63
+2024-01-08 15:34:15 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 765
+2024-01-08 15:34:15 [INFO    ] (basehttp.log_message) "GET /get-organizations-for-review HTTP/1.1" 200 765
