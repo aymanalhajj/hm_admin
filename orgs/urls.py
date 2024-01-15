@@ -6,12 +6,18 @@ from app_settings.views import get_visit_status
 urlpatterns= [
     
     path('create-organization', views.create_organization_with_location),
+    path('update-organization-location', views.update_organization_location),
     path('create-org-emp', views.create_organization_emp),
     path('create-org-service', views.create_organization_service),
 
     path('visit-organization', views.visit_organization),
     path('review-organization-visit', views.review_organization_visit),
     path('submit-organization-for-study', views.submit_organization_for_study),
+
+    path('get-organization-visit-tasks', views.get_organization_visit_tasks),
+    path('create-org-visit-task', views.create_organization_visit_task),
+    path('remove-org-file', views.remove_organization_file),
+    path('upload-org-file', views.upload_organization_file),
 
     path('upload-org-image', views.upload_organization_image),
     path('download-org-image', views.download_organization_image),

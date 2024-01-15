@@ -90,7 +90,7 @@ SIMPLE_JWT = {
 }
 DEBUG = True
 # DATE_INPUT_FORMATS = ['%d/%m/%Y']
-ALLOWED_HOSTS = ['192.168.183.138','localhost']
+ALLOWED_HOSTS = ['192.168.195.138','*']
 #my server ip
 ALLOWED_HOSTS += ['34.42.32.52']
 #my hamat server ip
@@ -103,6 +103,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'filetype',
     'rest_framework',
     'orgs',
     'custom_auth',

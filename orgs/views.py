@@ -19,6 +19,27 @@ logger = logging.getLogger(__file__)
 # logger.exception("This logs an exception.")
 
 @api_view(['POST'])
+def update_organization_location(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        print(auth_status)
+        return Response(auth_status,401)
+    serializer = GeoLocationSerializer(data = request.data)
+    if serializer.is_valid():
+        data = serializer.validated_data
+        geo_location, created = GeoLocation.objects.get_or_create(organization_id=data.get("organization"))
+        geo_location.longitude = data.get("longitude")
+        geo_location.latitude= data.get("latitude")
+        geo_location.country_name=data.get("country_name")
+        geo_location.locality=data.get("locality")
+        geo_location.address=data.get("address")
+        geo_location.save()
+        return Response({'status':'succeed', 'message':'location_updated_successfully',"data": geo_location.id})
+    else:
+        print({'status':'failed','errors': serializer.errors})
+        return Response({'status':'failed','errors': serializer.errors})
+
+@api_view(['POST'])
 def create_organization_with_location(request):
     auth_status = JWTAuthentication.authenticate(request)
     if auth_status['status'] != 'succeed':
@@ -81,7 +102,7 @@ def upload_organization_image(request):
     if auth_status['status'] != 'succeed':
         print(auth_status)
         return Response(auth_status,401)
-    serializer = OrganizationFileSerialzer(data = request.data)
+    serializer = OrganizationImageFileSerialzer(data = request.data)
     if serializer.is_valid():
         data = serializer.validated_data
         organization = Organization.objects.get(id = data.get("id"))
@@ -98,6 +119,42 @@ def upload_organization_image(request):
     else:
         print({'status':'failed','errors': serializer.errors})
         return Response({'status':'failed','errors': serializer.errors})
+
+@api_view(['POST'])
+def upload_organization_file(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        return Response(auth_status,401)
+    serializer = OrganizationFileSerialzer(data = request.data)
+    if serializer.is_valid():
+        org_file = serializer.save()
+        org_file.created_by = auth_status['user']
+        org_file.save()
+        return Response({'status':'succeed', 'message':'file_uploaded_successfully'})
+    else:
+        print({'status':'failed','errors': serializer.errors})
+        return Response({'status':'failed','errors': serializer.errors})
+
+@api_view(['POST'])
+def remove_organization_file(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        return Response(auth_status,401)
+    if ("id" in request.headers):
+        file_id = request.headers["id"]
+        if OrganizationFile.objects.filter(pk= file_id).exists():
+            org_file = OrganizationFile.objects.get(id = file_id)
+            if(org_file.file != None and org_file.file != ""):
+                old_file_path = org_file.file.path
+                #Delete old file when upload new one
+                if os.path.exists(old_file_path):
+                    os.remove(old_file_path)   
+            org_file.delete()
+            return Response({'status':'succeed', 'message':'file_removed_successfully'})
+        else:
+            return Response({'status':'failed', 'message':'file does not exist'})
+    else:
+        return Response({'status':'failed', 'message':'id must be passed'})
 
 @api_view(['POST'])
 def visit_organization(request):
@@ -152,6 +209,26 @@ def submit_organization_for_study(request):
         return Response({'status':'failed','message': 'organization id not passed'})
     
 
+@api_view(['POST'])
+def create_organization_visit_task(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        return Response(auth_status,401)
+    if("id" in request.headers):
+        task = VisitTask.objects.create(organization_id = request.headers["id"], visitor = auth_status['user'])
+        return Response({'status':'succeed', 'message':'visit_submited_successfully'})
+    else:
+        return Response({'status':'failed','message': 'organization id not passed'})
+
+@api_view(['GET']) 
+def get_organization_visit_tasks(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        return Response(auth_status,401)
+    objects = Organization.objects.filter(order_stage = 4).all()
+    serializer = ComplexOrganizationSerialzer(objects, many = True)
+    return Response(serializer.data)
+
 @api_view(['GET']) 
 def get_organizations_all(request):
     auth_status = JWTAuthentication.authenticate(request)
@@ -168,7 +245,6 @@ def get_organization_list(request):
     if auth_status['status'] != 'succeed':
         print(auth_status)
         return Response(auth_status,401)
-    # objects = Organization.objects.filter(employee = auth_status['user_id'] ).all()
     objects = Organization.objects.filter(order_stage = 1,employee = auth_status['user_id'] ).all()
     serializer = SimpleOrganizationSerialzer(objects, many = True)
     return Response(serializer.data)
@@ -194,11 +270,7 @@ def download_organization_image(request):
     if auth_status['status'] != 'succeed':
         print(auth_status)
         return Response(auth_status,401)
-    
-    # print(request.headers["id"])
-    # imageSerializer = OrganizationImageSerializer(data = request.data)
     if("id" in request.headers):
-        # print(imageSerializer.validated_data.get("id"))
         objects = Organization.objects.filter(id =  request.headers["id"])
         serializer = OrganizationImageSerializer(objects.first())
         return Response(serializer.data)
@@ -216,12 +288,6 @@ def get_organizations_for_visit(request):
     days_before_contract = settings.days_before_contract
     from_date = date.today() - datetime.timedelta(days=360)
     to_date = date.today() + datetime.timedelta(days=days_before_contract)
-
-    # convert string to date object
-    # d1 = datetime.strptime(str_d1, "%Y-%m-%d")
-    # d2 = datetime.strptime(str_d2, "%Y-%m-%d")
-
-    # # difference between dates in timedelta
     delta = to_date - from_date
     print(f'Difference is {delta.days} days')
     
@@ -254,8 +320,6 @@ def get_organizations_for_review(request):
     if manager_user.count()>0:
         objects = Organization.objects.filter(id__in = Subquery(OrganizationVisit.objects.filter(is_reviewed =  0, service_section__in = Subquery(manager_user.values('id'))).values('organization')))
         serializer = OrganizationForReviewSerialzer(objects, many = True)
-        # services = OrganizationService.objects.filter(service_section__in = Subquery(manager_user.values('id')))
-        # service_serializer =  OrganizationServiceSerialzer(services,many = True)
         return Response(serializer.data)
     return Response([])
 

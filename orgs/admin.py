@@ -10,8 +10,8 @@ class OrganizationAdmin(admin.ModelAdmin):
     list_display = ("name","org_type","order_status","note","expected_date","org_employees","org_services")
     list_filter = ("employee","expected_date","org_type","order_status","note","order_stage")
     search_fields = ("id","name","org_type","order_status","note","expected_date")
-    readonly_fields = ("name","org_type","employee","note","expected_date","created_date")
-    exclude = ("image_url",)
+    readonly_fields = ("created_date",)
+    # exclude = ("image_url",)
 
     def services(self, obj: Organization) -> str:
         service_type = ''
@@ -33,7 +33,7 @@ class OrganizationServiceAdmin(admin.ModelAdmin):
     list_display = ("id","service_section","service_type","organization")
     list_filter = ("id","service_section","service_type","organization")
     search_fields = ("id","service_section","service_type","organization")
-    readonly_fields =  ("service_section","service_type","organization","created_date")
+    readonly_fields =  ("created_date",)
     #,"is_visited")
 
 
@@ -42,7 +42,7 @@ class OrganizationEmployeeAdmin(admin.ModelAdmin):
     list_display = ("id","name","role","mobile","organization")
     list_filter = ("id","name","role","mobile","organization")
     search_fields = ("id","name","role","mobile","organization")
-    readonly_fields =  ("name","role","mobile","organization","created_date")
+    readonly_fields =  ("created_date",)
 
 
 # @admin.register(Organization)

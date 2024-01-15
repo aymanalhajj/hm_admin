@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-30 14:54+0300\n"
+"POT-Creation-Date: 2024-01-09 18:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 #: .\app_settings\models.py:6 .\app_settings\models.py:15
 #: .\app_settings\models.py:24 .\app_settings\models.py:33
 #: .\app_settings\models.py:42 .\app_settings\models.py:51
-#: .\app_settings\models.py:61 .\orgs\models.py:25 .\orgs\models.py:84
+#: .\app_settings\models.py:61 .\orgs\models.py:25 .\orgs\models.py:83
 msgid "name"
 msgstr "name"
 
@@ -89,11 +89,11 @@ msgstr "service section"
 msgid "Service Type"
 msgstr "service type"
 
-#: .\app_settings\models.py:71 .\orgs\models.py:69 .\orgs\models.py:96
+#: .\app_settings\models.py:71 .\orgs\models.py:65 .\orgs\models.py:96
 msgid "service section"
 msgstr "service section"
 
-#: .\app_settings\models.py:72 .\orgs\models.py:70 .\orgs\models.py:97
+#: .\app_settings\models.py:72 .\orgs\models.py:66 .\orgs\models.py:97
 msgid "service type"
 msgstr "service type"
 
@@ -112,6 +112,18 @@ msgstr "service section"
 #| msgid "service section"
 msgid "Service Section Employees"
 msgstr "service section"
+
+#: .\app_settings\models.py:83
+msgid "days before contract"
+msgstr ""
+
+#: .\app_settings\models.py:87
+msgid "Project Setting"
+msgstr ""
+
+#: .\app_settings\models.py:88
+msgid "Project Settings"
+msgstr ""
 
 #: .\custom_auth\apps.py:8
 #, fuzzy
@@ -206,16 +218,16 @@ msgstr ""
 msgid "address"
 msgstr ""
 
-#: .\geo_location\models.py:12 .\orgs\models.py:68 .\orgs\models.py:87
+#: .\geo_location\models.py:12 .\orgs\models.py:64 .\orgs\models.py:86
 #: .\orgs\models.py:98
 msgid "organization"
 msgstr "organization"
 
-#: .\hm_admin\settings.py:93
+#: .\hm_admin\settings.py:122
 msgid "Arabic"
 msgstr "Arabic"
 
-#: .\hm_admin\settings.py:94
+#: .\hm_admin\settings.py:123
 msgid "English"
 msgstr "English"
 
@@ -269,77 +281,82 @@ msgstr "expected date"
 msgid "order stage"
 msgstr "order status"
 
-#: .\orgs\models.py:33 .\orgs\models.py:77
+#: .\orgs\models.py:32
+msgid "image url"
+msgstr ""
+
+#: .\orgs\models.py:33 .\orgs\models.py:74 .\orgs\models.py:87
+#: .\orgs\models.py:100
 #, fuzzy
 #| msgid "expected date"
 msgid "created date"
 msgstr "expected date"
 
-#: .\orgs\models.py:48
+#: .\orgs\models.py:43
 #, fuzzy
 #| msgid "Organization Type"
 msgid "organization employees"
 msgstr "Organization Type"
 
-#: .\orgs\models.py:57
+#: .\orgs\models.py:52
 #, fuzzy
 #| msgid "Organization Type"
 msgid "organization services"
 msgstr "Organization Type"
 
-#: .\orgs\models.py:63
+#: .\orgs\models.py:58
 #, fuzzy
 #| msgid "organization"
 msgid "Organization"
 msgstr "organization"
 
-#: .\orgs\models.py:64
+#: .\orgs\models.py:59
 #, fuzzy
 #| msgid "organizations"
 msgid "Organizations"
 msgstr "organizations"
 
-#: .\orgs\models.py:71
+#: .\orgs\models.py:68
 msgid "visit state"
 msgstr ""
 
-#: .\orgs\models.py:72
+#: .\orgs\models.py:69
 msgid "visit note"
 msgstr ""
 
-#: .\orgs\models.py:73
+#: .\orgs\models.py:70
 msgid "visitor"
 msgstr ""
 
-#: .\orgs\models.py:74
+#: .\orgs\models.py:71
 msgid "is reviewed"
 msgstr ""
 
-#: .\orgs\models.py:75
+#: .\orgs\models.py:72
 msgid "reviewer"
 msgstr ""
 
-#: .\orgs\models.py:76
+#: .\orgs\models.py:73
 msgid "review note"
 msgstr ""
 
-#: .\orgs\models.py:80
+#: .\orgs\models.py:79
 #, fuzzy
 #| msgid "organizations"
 msgid "Organization Visit"
 msgstr "organizations"
 
-#: .\orgs\models.py:81
+#: .\orgs\models.py:80
 #, fuzzy
 #| msgid "organizations"
 msgid "Organization Visits"
 msgstr "organizations"
 
-#: .\orgs\models.py:85
+#: .\orgs\models.py:84
 msgid "employee role"
 msgstr "employee role"
 
-#: .\orgs\models.py:86
+#: .\orgs\models.py:85
 msgid "mobile number"
 msgstr "mobile number"
 
@@ -359,13 +376,13 @@ msgstr "Organization Type"
 msgid "is visited"
 msgstr ""
 
-#: .\orgs\models.py:102
+#: .\orgs\models.py:105
 #, fuzzy
 #| msgid "Organization Type"
 msgid "Organization Service"
 msgstr "Organization Type"
 
-#: .\orgs\models.py:103
+#: .\orgs\models.py:106
 #, fuzzy
 #| msgid "Organization Type"
 msgid "Organization Services"

@@ -15,11 +15,15 @@ VISIT_STATE = (
 )
 
 
-def file_location(instance, filename):
+def image_location(instance, filename):
     file_path = f"images/{filename}"
-    print(instance.id)
+    return file_path
+
+def file_location(instance, filename):
+    file_path = f"files/{filename}"
     return file_path
 from django.utils import timezone
+from app_settings.models import VisitStatus
 
 class Organization(models.Model):
     name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
@@ -29,7 +33,7 @@ class Organization(models.Model):
     note = models.TextField(max_length=1000, null=True, verbose_name=_("note") )
     expected_date = models.DateField(null= True,verbose_name=_("expected date") )
     order_stage =  models.ForeignKey(OrderStage,on_delete=models.SET_NULL   ,verbose_name=_("order stage"),related_name="ord_stage", default= None, null= True,blank=True)#, default = OrderStage.objects.first().pk )
-    image_url = models.ImageField(upload_to=file_location, blank=True, null=True)
+    image_url = models.ImageField(upload_to=image_location, blank=True, null=True, verbose_name=_("image url"))
     created_date = models.DateField(null= True,verbose_name=_("created date"),default=  timezone.now)
     
     @property
@@ -59,17 +63,15 @@ class Organization(models.Model):
         verbose_name_plural = _('Organizations')
         ordering = ['expected_date']
 
-from app_settings.models import VisitStatus
 class OrganizationVisit(models.Model):
     organization = models.ForeignKey(Organization,on_delete=models.CASCADE,verbose_name=_("organization") )
     service_section = models.ForeignKey(ServiceSection,on_delete=models.CASCADE,verbose_name=_("service section") )
     service_type = models.ForeignKey(ServiceType,on_delete=models.CASCADE,verbose_name=_("service type") )
-    # visit_state = models.IntegerField(default=0,choices=VISIT_STATE ,verbose_name=_("visit state") )
-    visit_state = models.ForeignKey(VisitStatus,on_delete=models.CASCADE,verbose_name=_("visit state") )
+    visit_state = models.ForeignKey(VisitStatus,null= True,on_delete=models.SET_NULL,verbose_name=_("visit state") )
     visit_note =  models.CharField(max_length= 100 ,null = False, blank=True ,verbose_name=_("visit note") )
-    visitor = models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("visitor") ,related_name="org_visitor", default= None, null= True)
+    visitor = models.ForeignKey(UserAccount,on_delete=models.SET_NULL,verbose_name=_("visitor") ,related_name="org_visitor", default= None, null= True)
     is_reviewed = models.IntegerField(default=0,choices=YES_NO,verbose_name=_("is reviewed") )
-    reviewer = models.ForeignKey(UserAccount,on_delete=models.DO_NOTHING,verbose_name=_("reviewer") ,related_name="org_reviewer", default= None, null= True)
+    reviewer = models.ForeignKey(UserAccount,on_delete=models.SET_NULL,verbose_name=_("reviewer") ,related_name="org_reviewer", default= None, null= True)
     review_note =  models.CharField(max_length= 100 ,null = False, blank=True ,verbose_name=_("review note") )
     created_date = models.DateField(null= True,verbose_name=_("created date"),default=  timezone.now)
     def __str__(self) -> str:
@@ -78,6 +80,37 @@ class OrganizationVisit(models.Model):
         managed = True
         verbose_name = _('Organization Visit')
         verbose_name_plural = _('Organization Visits')
+
+class VisitTask(models.Model):
+    organization = models.ForeignKey(Organization,on_delete=models.CASCADE,verbose_name=_("organization") )
+    visitor = models.ForeignKey(UserAccount,on_delete=models.SET_NULL,verbose_name=_("visitor") ,related_name="task_visitor", default= None, null= True)
+    started_at = models.DateField(null= True,verbose_name=_("started at"),default=  timezone.now)
+    
+    finished_at = models.DateField(null= True,verbose_name=_("finished at"))
+    note =  models.CharField(max_length= 100 ,null = False, blank=True ,verbose_name=_("note") )
+    task_state = models.ForeignKey(VisitStatus,on_delete=models.CASCADE,verbose_name=_("task state") , null= True)
+    
+    created_at = models.DateField(null= True,verbose_name=_("created at"),default=  timezone.now)
+    def __str__(self) -> str:
+        return str(self.id)
+    class Meta:
+        managed = True
+        verbose_name = _('Visit Task')
+        verbose_name_plural = _('Visit Tasks')
+
+class OrganizationFile(models.Model):
+    organization = models.ForeignKey(Organization,on_delete=models.CASCADE,verbose_name=_("organization") )
+    file = models.FileField(upload_to=file_location, blank=True, null=True, verbose_name=_("file url"))
+    description =  models.CharField(max_length= 100 ,null = False, blank=False ,verbose_name=_("file description") )
+    
+    created_by = models.ForeignKey(UserAccount,on_delete=models.SET_NULL,verbose_name=_("created by") , default= None, null= True)
+    created_at = models.DateField(null= True,verbose_name=_("created at"),default=  timezone.now)
+    def __str__(self) -> str:
+        return str(self.id)
+    class Meta:
+        managed = True
+        verbose_name = _('Organization File')
+        verbose_name_plural = _('Organization Files')
 
 class OrganizationEmployee(models.Model):
     name = models.CharField(max_length= 100 ,null = False, blank=True ,verbose_name=_("name") )

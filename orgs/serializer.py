@@ -46,15 +46,50 @@ class EngineerNoteSerialzer(serializers.Serializer):
     engineer_note = serializers.CharField()
 
 
-class OrganizationFileSerialzer(serializers.Serializer):
+class OrganizationImageFileSerialzer(serializers.Serializer):
     id = serializers.CharField()
     image_url =  Base64ImageField(required=True)
 
+from django.core.files.base import ContentFile
+from django.core.files.uploadedfile import SimpleUploadedFile
+from rest_framework import serializers
+from drf_extra_fields.fields import Base64FileField, Base64ImageField
+import filetype
+
+## defenition
+class MyCustomBase64FileField(Base64FileField):
+    """
+    A custom serializer field to handle base64-encoded files.
+    """
+    ALLOWED_MIME_TYPES = {
+        'image/jpeg': 'jpg',
+        'image/png': 'png',
+        'application/pdf': 'pdf',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'docx',
+    }
+
+    ALLOWED_TYPES = ['pdf', 'docx', 'jpg', 'jpeg', 'png']
+
+    def get_file_extension(self, filename, decoded_file):
+        extension = filetype.guess_extension(decoded_file)
+        return extension
+
+    def to_internal_value(self, data):
+        if isinstance(data, str):
+            return super().to_internal_value(data)
+        return data
+
+## Usge
+class OrganizationFileSerialzer(serializers.ModelSerializer):
+    file = MyCustomBase64FileField(required=True)
+    class Meta:
+        model = OrganizationFile
+        fields = ("organization","file","description")
+    # def create(self,obj):
+    #     print(obj.get('organization'))
+    #     OrganizationFile.objects.create(organization_id = obj.get('organization'),description = obj.get('description'))
     
-    # image_url =  Base64ImageField(required=False)
-    # class Meta:
-    #     model = Organization
-    #     fields = ("id","image_url")
+
 
 class VisitReviewSerializer(serializers.Serializer):
     visit_id = serializers.IntegerField()
@@ -66,13 +101,18 @@ class VisitSerializer(serializers.ModelSerializer):
         model = OrganizationVisit
         fields = ('id','is_reviewed','service_type','service_section','visit_state','visit_note','organization','visitor',)
 
+class VisitTaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = VisitTask
+        fields = ('organization','note')
+
 class ComplexOrganizationSerialzer(serializers.ModelSerializer):
     # organizationemployee_set = ComplexOrganizationEmployeeSerialzer(many = True)
     # organizationservice_set = ComplexOrganizationServiceSerialzer(many = True)
     class Meta:
         model = Organization
         fields = ('id','name','org_type','order_status','note','expected_date',"order_stage"
-                  ,'organizationemployee_set' ,'organizationservice_set','geolocation_set','image_url')
+                  ,'organizationemployee_set' ,'organizationservice_set','geolocation_set','image_url','organizationfile_set')
         depth = 1
 
 class SimpleOrganizationSerialzer(serializers.ModelSerializer):
@@ -102,11 +142,6 @@ class VisitorSerializer(serializers.Serializer):
     last_name = serializers.CharField()
     username = serializers.CharField()
 
-# class VisitorSerializer(serializers.ModelSerializer):
-    # class Meta:
-    #     model = UserAccount
-    #     fields = ('first_name','last_name','username')
-
 class DeepVisitSerializer(serializers.ModelSerializer):
     visitor = VisitorSerializer(many = False)
     class Meta:
@@ -125,33 +160,3 @@ class OrganizationForReviewSerialzer(serializers.ModelSerializer):
         depth = 1
     def get_organizationvisit_set(self, obj):
         return DeepVisitSerializer(obj.organizationvisit_set.filter(is_reviewed = 0),many =True).data
-        # return DeepVisitSerializer(obj.organizationvisit_set.all(),many =True).data
-
-# class OrganizationTypeSerialzer(serializers.ModelSerializer):
-#     class Meta:
-#         model = OrganizationType
-#         fields = "__all__"
-
-# class OrderStatusSerialzer(serializers.ModelSerializer):
-#     class Meta:
-#         model = OrderStatus
-#         fields = "__all__"
-
-
-# class EmployeeRoleSerialzer(serializers.ModelSerializer):
-#     class Meta:
-#         model = EmployeeRole
-#         fields = "__all__"
-
-
-# class ServiceTypeSerialzer(serializers.ModelSerializer):
-#     class Meta:
-#         model = ServiceType
-#         fields = "__all__"
-
-
-# class ServiceSectionSerialzer(serializers.ModelSerializer):
-#     class Meta:
-#         model = ServiceSection
-#         fields = "__all__"
-
