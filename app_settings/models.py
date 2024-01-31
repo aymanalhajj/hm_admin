@@ -20,6 +20,15 @@ class OrderStatus(models.Model):
         verbose_name = _('Order Status')
         verbose_name_plural = _('Order Statuses')
     
+class TaskStatus(models.Model):
+    name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
+    def __str__(self) -> str:
+        return self.name
+    class Meta:
+        managed = True
+        verbose_name = _('Task Status')
+        verbose_name_plural = _('Task Statuses')
+    
 class VisitStatus(models.Model):
     name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
     def __str__(self) -> str:

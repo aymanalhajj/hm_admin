@@ -207,26 +207,56 @@ def submit_organization_for_study(request):
         return Response({'status':'succeed', 'message':'organization_submited_successfully'})
     else:
         return Response({'status':'failed','message': 'organization id not passed'})
-    
 
 @api_view(['POST'])
-def create_organization_visit_task(request):
+def start_organization_visit_task(request):
     auth_status = JWTAuthentication.authenticate(request)
     if auth_status['status'] != 'succeed':
         return Response(auth_status,401)
     if("id" in request.headers):
-        task = VisitTask.objects.create(organization_id = request.headers["id"], visitor = auth_status['user'])
-        return Response({'status':'succeed', 'message':'visit_submited_successfully'})
+        task = VisitTask.objects.create(organization_id = request.headers["id"], visitor = auth_status['user'],task_state_id =1 )
+        return Response({'status':'succeed', 'message':'task_started_successfully'})
     else:
         return Response({'status':'failed','message': 'organization id not passed'})
 
+@api_view(['POST'])
+def finish_organization_visit_task(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    serializer = VisitTaskNoteSerializer(data = request.data)
+    if auth_status['status'] != 'succeed':
+        return Response(auth_status,401)
+    if serializer.is_valid():
+        task = VisitTask.objects.get(id = serializer.validated_data.get("task_id"), visitor = auth_status['user'])
+        
+        task.note = serializer.validated_data.get("note")
+        task.finished_at = date.today()
+        task.task_state_id =  "2"
+        task.save()
+
+        Organization.objects.filter(id = task.organization_id).update(order_stage = 1)
+
+        return Response({'status':'succeed', 'message':'task_finished_successfully'})
+    else:
+        return Response({'status':'failed','errors': serializer.errors})
+    
 @api_view(['GET']) 
-def get_organization_visit_tasks(request):
+def get_new_visit_tasks(request):
     auth_status = JWTAuthentication.authenticate(request)
     if auth_status['status'] != 'succeed':
         return Response(auth_status,401)
-    objects = Organization.objects.filter(order_stage = 4).all()
-    serializer = ComplexOrganizationSerialzer(objects, many = True)
+    objects = Organization.objects.filter(order_stage = 4).exclude(id__in = Subquery(VisitTask.objects.filter(task_state=1, visitor = auth_status['user_id']).values('organization_id')))
+    serializer = SimpleOrganizationSerialzer(objects, many = True)
+    return Response(serializer.data)
+
+@api_view(['GET']) 
+def get_in_progress_visit_tasks(request):
+    auth_status = JWTAuthentication.authenticate(request)
+    if auth_status['status'] != 'succeed':
+        return Response(auth_status,401)
+    # objects = Organization.objects.filter(order_stage = 4).filter(id__in = Subquery(VisitTask.objects.filter(task_state=1, visitor = auth_status['user_id']).values('organization_id')))
+    objects = VisitTask.objects.filter(task_state=1, visitor = auth_status['user_id'])
+    
+    serializer = SimpleVisitTaskSerializer(objects, many = True)
     return Response(serializer.data)
 
 @api_view(['GET']) 
@@ -288,8 +318,8 @@ def get_organizations_for_visit(request):
     days_before_contract = settings.days_before_contract
     from_date = date.today() - datetime.timedelta(days=360)
     to_date = date.today() + datetime.timedelta(days=days_before_contract)
-    delta = to_date - from_date
-    print(f'Difference is {delta.days} days')
+    # delta = to_date - from_date
+    # print(f'Difference is {delta.days} days')
     
     auth_status = JWTAuthentication.authenticate(request)
     if auth_status['status'] != 'succeed':

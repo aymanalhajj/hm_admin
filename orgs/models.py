@@ -14,6 +14,8 @@ VISIT_STATE = (
     (2,_('disagreed'))
 )
 
+from django.utils import timezone
+from app_settings.models import VisitStatus,TaskStatus
 
 def image_location(instance, filename):
     file_path = f"images/{filename}"
@@ -22,8 +24,6 @@ def image_location(instance, filename):
 def file_location(instance, filename):
     file_path = f"files/{filename}"
     return file_path
-from django.utils import timezone
-from app_settings.models import VisitStatus
 
 class Organization(models.Model):
     name = models.CharField(max_length= 100 ,null = False ,verbose_name=_("name") )
@@ -50,7 +50,12 @@ class Organization(models.Model):
         services = ''
         services += '<table class="myTable"> <thead> <tr><td>القسم</td><td>الخدمة</td></tr></thead><tbody> '
         for c in self.organizationservice_set.all():
-            services += f'<tr><td>{c.service_section}</td><td>{c.service_type}</td></tr>'
+            if c.service_section_id ==1:
+                services += f'<tr style="background-color: #dba84f;color:white;"><td>{c.service_section}</td><td>{c.service_type}</td></tr>'
+            elif  c.service_section_id ==2:
+                services += f'<tr style="background-color: #5e9cd3;color:white;"><td>{c.service_section}</td><td>{c.service_type}</td></tr>'
+            elif  c.service_section_id ==3:
+                services += f'<tr style="background-color: #db4f4f;color:white;"><td>{c.service_section}</td><td>{c.service_type}</td></tr>'
         services += '</tbody></table>'
         return format_html(services) 
     org_services.fget.short_description = _('organization services')
@@ -88,7 +93,7 @@ class VisitTask(models.Model):
     
     finished_at = models.DateField(null= True,verbose_name=_("finished at"))
     note =  models.CharField(max_length= 100 ,null = False, blank=True ,verbose_name=_("note") )
-    task_state = models.ForeignKey(VisitStatus,on_delete=models.CASCADE,verbose_name=_("task state") , null= True)
+    task_state = models.ForeignKey(TaskStatus,on_delete=models.CASCADE,verbose_name=_("task state") , null= True)
     
     created_at = models.DateField(null= True,verbose_name=_("created at"),default=  timezone.now)
     def __str__(self) -> str:

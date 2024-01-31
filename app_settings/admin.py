@@ -56,6 +56,14 @@ class VisitStatusAdmin(admin.ModelAdmin):
     search_fields = ("name",)
     def has_delete_permission(self, request, obj=None):
         return False
+    
+@admin.register(TaskStatus)
+class TaskStatusAdmin(admin.ModelAdmin):
+    list_display = ("id","name")
+    list_filter = ("id","name")
+    search_fields = ("name",)
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 @admin.register(ProjectSetting)
 class ProjectSettingAdmin(admin.ModelAdmin):

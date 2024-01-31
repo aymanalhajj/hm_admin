@@ -106,6 +106,10 @@ class VisitTaskSerializer(serializers.ModelSerializer):
         model = VisitTask
         fields = ('organization','note')
 
+class VisitTaskNoteSerializer(serializers.Serializer):
+    task_id = serializers.CharField()
+    note = serializers.CharField(required=False,allow_blank=True)
+
 class ComplexOrganizationSerialzer(serializers.ModelSerializer):
     # organizationemployee_set = ComplexOrganizationEmployeeSerialzer(many = True)
     # organizationservice_set = ComplexOrganizationServiceSerialzer(many = True)
@@ -120,6 +124,33 @@ class SimpleOrganizationSerialzer(serializers.ModelSerializer):
         model = Organization
         fields = ('id','name',)
 
+class SimpleVisitTaskSerializer(serializers.ModelSerializer):
+    organization_name = serializers.SerializerMethodField(source='get_organization_name')
+    organization_id = serializers.SerializerMethodField(source='get_organization_id')
+    task_id = serializers.SerializerMethodField(source='get_task_id')
+    class Meta:
+        model = VisitTask
+        fields = ('task_id','organization_id','organization_name')
+        depth = 1
+    def get_organization_name(self, obj):
+        return obj.organization.name
+    def get_organization_id(self, obj):
+        return obj.organization.id
+    def get_task_id(self, obj):
+        return obj.id
+ 
+class OrganizationForReviewSerialzer(serializers.ModelSerializer):
+    # organizationemployee_set = ComplexOrganizationEmployeeSerialzer(many = True)
+    # organizationvisit_set = DeepVisitSerializer(many = True)
+    organizationvisit_set = serializers.SerializerMethodField(source='get_organizationvisit_set')
+    class Meta:
+        model = Organization
+        fields = ('id','name','org_type','order_status','note','expected_date',"order_stage"
+                  ,'organizationvisit_set','geolocation_set')
+        depth = 1
+    def get_organizationvisit_set(self, obj):
+        return DeepVisitSerializer(obj.organizationvisit_set.filter(is_reviewed = 0),many =True).data
+   
 from django.core.files import File
 import base64
 
@@ -148,15 +179,3 @@ class DeepVisitSerializer(serializers.ModelSerializer):
         model = OrganizationVisit
         fields = ('id','is_reviewed','service_type','service_section','visit_state','visit_note','visitor',)
         depth = 1
-
-class OrganizationForReviewSerialzer(serializers.ModelSerializer):
-    # organizationemployee_set = ComplexOrganizationEmployeeSerialzer(many = True)
-    # organizationvisit_set = DeepVisitSerializer(many = True)
-    organizationvisit_set = serializers.SerializerMethodField(source='get_organizationvisit_set')
-    class Meta:
-        model = Organization
-        fields = ('id','name','org_type','order_status','note','expected_date',"order_stage"
-                  ,'organizationvisit_set','geolocation_set')
-        depth = 1
-    def get_organizationvisit_set(self, obj):
-        return DeepVisitSerializer(obj.organizationvisit_set.filter(is_reviewed = 0),many =True).data

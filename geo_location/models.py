@@ -1,5 +1,6 @@
 from django.db import models
 from orgs.models import Organization
+from django.utils import timezone
 
 from django.utils.translation import gettext_lazy as _
 
@@ -10,6 +11,7 @@ class GeoLocation(models.Model):
     locality = models.CharField(max_length=200,verbose_name=_("locality"))
     address = models.CharField(max_length=1000,verbose_name=_("address"))
     organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True,verbose_name=_("organization"))
+    created_date = models.DateField(null= True,verbose_name=_("created date"),default=  timezone.now)
 
     def __str__(self) -> str:
         return "الموقع ("+str(self.longitude) +", "+ str(self.latitude)+")"

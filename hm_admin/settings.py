@@ -19,36 +19,37 @@ JWT_CONF = {
     "TOKEN_LIFETIME_HOURS": 24,
 }
 
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "root": {"level": "INFO", "handlers": ["file"]},
-    "handlers": {
-        "file": {
-            "level": "INFO",
-            "class": "logging.FileHandler",
-            # "filename": "/var/log/django.log",
-            "filename": os.path.join(BASE_DIR, 'django.log'),
-            "formatter": "app",
-        },
-    },
-    "loggers": {
-        "django": {
-            "handlers": ["file"],
-            "level": "INFO",
-            "propagate": True
-        },
-    },
-    "formatters": {
-        "app": {
-            "format": (
-                u"%(asctime)s [%(levelname)-8s] "
-                "(%(module)s.%(funcName)s) %(message)s"
-            ),
-            "datefmt": "%Y-%m-%d %H:%M:%S",
-        },
-    },
-}
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "root": {"level": "INFO", "handlers": ["file"]},
+#     "handlers": {
+#         "file": {
+#             "level": "INFO",
+#             "class": "logging.FileHandler",
+#             # "filename": "/var/log/django.log",
+#             "filename": os.path.join(BASE_DIR, 'django.log'),
+#             "formatter": "app",
+#         },
+#     },
+#     "loggers": {
+#         "django": {
+#             "handlers": ["file"],
+#             "level": "INFO",
+#             "propagate": True
+#         },
+#     },
+#     "formatters": {
+#         "app": {
+#             "format": (
+#                 u"%(asctime)s [%(levelname)-8s] "
+#                 "(%(module)s.%(funcName)s) %(message)s"
+#             ),
+#             "datefmt": "%Y-%m-%d %H:%M:%S",
+#         },
+#     },
+# }
+
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
@@ -97,7 +98,9 @@ ALLOWED_HOSTS += ['34.42.32.52']
 ALLOWED_HOSTS += ['34.66.55.3']
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'hm_admin.apps.CustomAdminConfig',  # replaced
+    # 'django.contrib.admin',
+    # 'liststyle',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -109,6 +112,8 @@ INSTALLED_APPS = [
     'custom_auth',
     'geo_location',
     'app_settings',
+    
+    # 'crispy_forms',
     # 'drf_extra_fields',
 ]
 

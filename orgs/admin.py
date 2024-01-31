@@ -7,7 +7,7 @@ from django.utils.html import format_html
 
 @admin.register(Organization)
 class OrganizationAdmin(admin.ModelAdmin):
-    list_display = ("name","org_type","order_status","note","expected_date","org_employees","org_services")
+    list_display = ("name","org_type","order_status","employee","expected_date","org_employees","org_services")
     list_filter = ("employee","expected_date","org_type","order_status","note","order_stage")
     search_fields = ("id","name","org_type","order_status","note","expected_date")
     readonly_fields = ("created_date",)
@@ -28,12 +28,25 @@ class OrganizationVisitAdmin(admin.ModelAdmin):
     search_fields = ("organization",)
     readonly_fields = ('organization','service_section','service_type','visit_state','visit_note','visitor','is_reviewed','review_note','reviewer','created_date')
 
+@admin.register(VisitTask)
+class VisitTaskAdmin(admin.ModelAdmin):
+    list_display = ('id','organization','visitor','started_at','finished_at','task_state',)
+    list_filter =  ('id','organization','visitor','started_at','finished_at','note','task_state',)
+    search_fields = ("organization","visitor")
+    execlude = ("note",)
+
 @admin.register(OrganizationService)
 class OrganizationServiceAdmin(admin.ModelAdmin):
     list_display = ("id","service_section","service_type","organization")
     list_filter = ("id","service_section","service_type","organization")
     search_fields = ("id","service_section","service_type","organization")
     readonly_fields =  ("created_date",)
+    def get_row_css(self, obj, index):
+        print("obj.service_section"+obj.service_section)
+        if obj.service_section==1:
+            print("obj.service_section"+obj.service_section)
+            return 'red red%d' % index
+        return ''
     #,"is_visited")
 
 
@@ -50,6 +63,7 @@ class OrganizationAdmin(admin.ModelAdmin):
     list_display = ("id","name","org_type","order_status","note","expected_date")
     list_filter = ("id","name","org_type","order_status","note","expected_date")
     search_fields = ("id","name","org_type","order_status","note","expected_date")
+
 
 
 # admin.site.register(Organization)

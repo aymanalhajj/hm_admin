@@ -5,6 +5,13 @@ from django.conf.urls.static import static
 
 from django.conf.urls.i18n import i18n_patterns
 
+from django.contrib import admin
+from django.urls import path, include
+
+from orgs import site_views
+from .admin import admin_statistics_view  # new
+# from .admin import admin_site
+
 urlpatterns = []
 
 urlpatterns += i18n_patterns(
@@ -15,6 +22,9 @@ urlpatterns += [
     # path('admin/', admin.site.urls),
     path('', include('orgs.urls')),
     path('auth/', include('custom_auth.urls')),
+    path("admin/statistics/", admin.site.admin_view(admin_statistics_view),name="admin-statistics"),
+    # path("myadmin/", admin_site.urls),
+    path("admin/get-clients-map/", admin.site.admin_view(site_views.get_clients_map),name="admin-statistics"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

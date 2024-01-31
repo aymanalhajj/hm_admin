@@ -1,0 +1,465 @@
+<!-- orgs/templates/admin/statistics.html -->
+
+{% extends "admin/base.html" %}
+
+{% load i18n %}
+{% block userlinks %}
+
+{% endblock %}
+{% block content %}
+
+<style>
+  .button {
+    background-color: #0446aa;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 2px;
+  }
+  .filterForm {
+      border: 3px solid gray;
+      margin: auto;
+      margin-bottom: 20px;
+      direction: rtl;
+      width: fit-content;
+      padding: 5px;
+      text-align: center;
+      border-radius: 8px;
+    }
+  </style>
+<script type="text/javascript" src="http://code.createjs.com/createjs-2013.09.25.combined.js"></script> 
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>  -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script> -->
+    
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+      
+<script
+  src="https://code.jquery.com/jquery-3.6.4.min.js"
+  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+  crossorigin="anonymous">
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-v4-grid-only@1.0.0/dist/bootstrap-grid.min.css">
+
+<div class="filterForm" >
+  <form id="filterForm">
+    <!-- <select name="year" id="year"></select> -->
+    <div style="display: inline;">
+      <label for="year">من تاريخ:</label>
+      <input type="date" name="from_date" value="{{ from_date }}" id="from_date" style="padding: 3px;">
+    </div>
+    <div style="display: inline-block;">
+      <label for="year">إلى تاريخ:</label>
+      <input type="date" name="to_date" value="{{ to_date }}" id="to_date" style="padding: 3px;">
+    </div>
+    <input type="submit" value="تحديث" name="_load" class="button">
+  </form>
+</div>
+<script>
+    $(document).ready(function() {
+        var now = new Date();
+        var month = (now.getMonth() + 1);               
+        var day = now.getDate();
+        if (month < 10) 
+            month = "0" + month;
+        if (day < 10) 
+            day = "0" + day;
+        var today = now.getFullYear() + '-' + month + '-' + day;
+
+        var last_month_day = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+        
+        var to_date_field = last_month_day.getFullYear() + '-' + month + '-' + last_month_day.getDate();
+        var from_date_field = last_month_day.getFullYear() + '-' + month + '-' + '01';
+        $('#from_date').val(from_date_field);
+        $('#to_date').val(to_date_field);
+
+        
+        var to_date =last_month_day.getDate() + month + last_month_day.getFullYear();
+        var from_date  = '01'+ month + last_month_day.getFullYear() ;
+
+        loadAllCharts(from_date,to_date);
+    });
+  
+    $("#filterForm").on("submit", (event) => {
+      event.preventDefault();
+  
+      const from_date_field = $("#from_date").val();
+      var parsed_from_date = new  Date(Date.parse(from_date_field));
+
+      var form_month = (parsed_from_date.getMonth() + 1);               
+      var from_day = parsed_from_date.getDate();
+      if (form_month < 10){
+          form_month = "0" + form_month;
+      }
+      if (from_day < 10) {
+          from_day = "0" + from_day;
+      }
+        
+      var from_date = from_day + form_month + parsed_from_date.getFullYear() ;
+
+      const to_date_field = $("#to_date").val();
+      var parsed_to_date = new  Date(Date.parse(to_date_field));
+
+      var to_month = (parsed_to_date.getMonth() + 1);               
+      var to_day = parsed_to_date.getDate();
+      if (to_month < 10){
+        to_month = "0" + to_month;
+      }
+      if (to_day < 10) {
+        to_day = "0" + to_day;
+      }
+        
+      var to_date = to_day + to_month + parsed_to_date.getFullYear() ;
+
+      
+      // console.log("from_date " + from_date + "!")
+      // console.log("format from_date " + from_dt.getFullYear() + "!")
+      loadAllCharts(from_date,to_date);
+    });
+  
+    function loadChart(chart, endpoint) {
+      $.ajax({
+        url: endpoint,
+        type: "GET",
+        dataType: "json",
+        success: (jsonResponse) => {
+          // Extract data from the response
+          const title = jsonResponse.title;
+          const labels = jsonResponse.data.labels;
+          const datasets = jsonResponse.data.datasets;
+  
+          // Reset the current chart
+          chart.data.datasets = [];
+          chart.data.labels = [];
+  
+          // Load new data into the chart
+          chart.options.title.text = title;
+          chart.options.title.display = true;
+          chart.data.labels = labels;
+          datasets.forEach(dataset => {
+              chart.data.datasets.push(dataset);
+          });
+          chart.update();
+          
+          },
+        error: () => console.log("Failed to fetch chart data from " + endpoint + "!")
+      });
+    }
+  
+    function loadLabeledChart(chart, endpoint) {
+      var data = [
+      {
+          value: 300,
+          color:"#F7464A",
+          // highlight: "#FF5A5E",
+          // label: "Red"
+      },
+      {
+          value: 50,
+          color: "#46BFBD",
+          highlight: "#5AD3D1",
+          label: "Green"
+      },
+      {
+          value: 100,
+          color: "#FDB45C",
+          highlight: "#FFC870",
+          label: "Yellow"
+      }
+      ];
+      var canvas = document.getElementById("myChart");
+      var ctx = canvas.getContext("2d");
+      var midX = canvas.width/2;
+      var midY = canvas.height/2;
+      
+      var myPieChart = new Chart(ctx).Pie(data, {
+          showTooltips: false,
+          onAnimationProgress: drawSegmentValues
+      });
+      var radius = myPieChart.outerRadius;
+      function drawSegmentValues()
+      {
+          for(var i=0; i<myPieChart.segments.length; i++)
+          {
+              ctx.fillStyle="white";
+              var textSize = canvas.width/10;
+              //ctx.font= textSize+"px Verdana";
+              // Get needed variables
+              var value = myPieChart.segments[i].value;
+              var startAngle = myPieChart.segments[i].startAngle;
+              var endAngle = myPieChart.segments[i].endAngle;
+              var middleAngle = startAngle + ((endAngle - startAngle)/2);
+              var posX = (radius/2) * Math.cos(middleAngle) + midX;
+              var posY = (radius/2) * Math.sin(middleAngle) + midY;
+              var w_offset = ctx.measureText(value).width/2;
+              var h_offset = textSize/4;
+              ctx.fillText(value, posX - w_offset, posY + h_offset);
+          }
+      }
+    }
+  
+    function loadAllCharts(from_date,to_date) {
+      loadChart(organizationByStateChart, `/get-organizations-by-state/${from_date}/${to_date}`);
+      loadChart(organizationByEmpChart, `/get-organizations-by-emp/${from_date}/${to_date}`);
+      loadChart(organizationBySectionChart, `/get-organizations-by-section/${from_date}/${to_date}`);
+      loadChart(organizationVisitByVisitorChart, `/get-organization-visit-by-emp/${from_date}/${to_date}`);
+      loadChart(organizationForVisitBySectionChart, `/get-organization-for-visit-by-section/${from_date}/${to_date}`);
+      loadLabeledChart(organizationForVisitBySectionChart, `/get-organization-for-visit-by-section/${from_date}/${to_date}`);
+    }
+  </script>
+
+      <div class="row">
+        <div class="col-4">
+          <canvas id="organizationByStateChart"></canvas>
+        </div>
+        <div class="col-4">
+          <canvas id="organizationByEmpChart"></canvas>
+        </div>
+        <div class="col-4">
+          <canvas id="organizationBySectionChart"></canvas>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-4">
+          <canvas id="organizationVisitByVisitorChart"></canvas>
+        </div>
+        <div class="col-4">
+          <canvas id="organizationForVisitBySectionChart"></canvas>
+        </div>
+        <div class="col-4">
+          <canvas id="myChart" ></canvas>
+        </div>
+      </div>
+          
+     
+
+
+      <script>
+        
+        let organizationForVisitBySectionCtx = document.getElementById("organizationForVisitBySectionChart").getContext("2d");
+        ctx = organizationForVisitBySectionCtx
+        let organizationForVisitBySectionChart = new Chart(organizationForVisitBySectionCtx, {
+          type: "pie",
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            aspectRatio: 1,
+            
+            plugins: {
+              title: {
+                display: true,
+                text: 'عدد عملاء يجب زيارتهم حسب القسم',
+              },
+              
+              datalabels: {
+                display: true,
+                formatter: (val, ctx) => {
+                  // Grab the label for this value
+                  const label = ctx.chart.data.labels[ctx.dataIndex];
+
+                  // Format the number with 2 decimal places
+                  const formattedVal = Intl.NumberFormat('en-US', {
+                    minimumFractionDigits: 2,
+                  }).format(val);
+
+                  // Put them together
+                  return `${label}: ${formattedVal}`;
+                },
+                color: '#ff0',
+                backgroundColor: '#404040',
+              },
+            },
+            title: {
+            },
+            layout: {
+              padding: {
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 25
+              }
+            }
+          }
+        },
+        {
+    showTooltips: false,
+    onAnimationProgress: drawSegmentValues
+});
+
+var radius = organizationForVisitBySectionChart.outerRadius;
+function drawSegmentValues()
+{
+    for(var i=0; i<organizationForVisitBySectionChart.segments.length; i++)
+    {
+        ctx.fillStyle="white";
+        var textSize = canvas.width/10;
+        //ctx.font= textSize+"px Verdana";
+        // Get needed variables
+        var value = organizationForVisitBySectionChart.segments[i].value;
+        var startAngle = organizationForVisitBySectionChart.segments[i].startAngle;
+        var endAngle = organizationForVisitBySectionChart.segments[i].endAngle;
+        var middleAngle = startAngle + ((endAngle - startAngle)/2);
+        var posX = (radius/2) * Math.cos(middleAngle) + midX;
+        var posY = (radius/2) * Math.sin(middleAngle) + midY;
+        var w_offset = ctx.measureText(value).width/2;
+        var h_offset = textSize/4;
+        ctx.fillText(value, posX - w_offset, posY + h_offset);
+    }
+}
+        
+
+
+        let organizationVisitByVisitorCtx = document.getElementById("organizationVisitByVisitorChart").getContext("2d");
+        let organizationVisitByVisitorChart = new Chart(organizationVisitByVisitorCtx, {
+          type: "pie",
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            aspectRatio: 1,
+            
+            plugins: {
+              title: {
+                display: true,
+                text: 'عدد الزيارات حسب الموظف',
+              },
+              datalabels: {
+                display: true,
+                align: 'bottom',
+                backgroundColor: '#ccc',
+                borderRadius: 3,
+                font: {
+                  size: 18,
+                },
+              },
+            },
+            title: {
+            },
+            layout: {
+              padding: {
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 25
+              }
+            }
+          }
+        });
+
+
+        let organizationBySectionCtx = document.getElementById("organizationBySectionChart").getContext("2d");
+        let organizationBySectionChart = new Chart(organizationBySectionCtx, {
+          type: "pie",
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            aspectRatio: 1,
+            
+            plugins: {
+              title: {
+                display: true,
+                text: 'عدد العملاء حسب القسم',
+              },
+              datalabels: {
+                display: true,
+                align: 'bottom',
+                backgroundColor: '#ccc',
+                borderRadius: 3,
+                font: {
+                  size: 18,
+                },
+              },
+            },
+            title: {
+            },
+            layout: {
+              padding: {
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 25
+              }
+            }
+          }
+        });
+        
+
+
+
+        let organizationByEmpCtx = document.getElementById("organizationByEmpChart").getContext("2d");
+        let organizationByEmpChart = new Chart(organizationByEmpCtx, {
+          type: "pie",
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            aspectRatio: 1,
+            
+            plugins: {
+              title: {
+                display: true,
+                text: 'عدد العملاء حسب الموظف',
+              },
+              datalabels: {
+                display: true,
+                align: 'bottom',
+                backgroundColor: '#ccc',
+                borderRadius: 3,
+                font: {
+                  size: 18,
+                },
+              },
+            },
+            title: {
+            },
+            layout: {
+              padding: {
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 25
+              }
+            }
+          }
+        });
+        
+        let organizationByStateCtx = document.getElementById("organizationByStateChart").getContext("2d");
+        let organizationByStateChart = new Chart(organizationByStateCtx, {
+          type: "pie",
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            aspectRatio: 1,
+            
+            plugins: {
+              title: {
+                display: true,
+                text: 'عدد العملاء حسب حالة الطلب',
+              },
+              datalabels: {
+                display: true,
+                align: 'bottom',
+                backgroundColor: '#ccc',
+                borderRadius: 3,
+                font: {
+                  size: 18,
+                },
+              },
+            },
+            title: {
+            },
+            layout: {
+              padding: {
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 25
+              }
+            }
+          }
+        });
+      </script>
+{% endblock %}
