@@ -19,7 +19,7 @@ JWT_CONF = {
     "TOKEN_LIFETIME_HOURS": 24,
 }
 
-LOGGING = {
+_LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "root": {"level": "INFO", "handlers": ["file"]},
