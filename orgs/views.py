@@ -237,7 +237,7 @@ def finish_organization_visit_task(request):
         task.task_state_id =  "2"
         task.save()
 
-        Organization.objects.filter(id = task.organization_id).update(order_stage = 1)
+        Organization.objects.filter(id = task.organization_id).update(order_stage = 2)
 
         return Response({'status':'succeed', 'message':'task_finished_successfully'})
     else:
