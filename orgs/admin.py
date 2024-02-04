@@ -44,7 +44,7 @@ class VisitTaskAdmin(admin.ModelAdmin):
 
 @admin.register(OrganizationService)
 class OrganizationServiceAdmin(admin.ModelAdmin):
-    list_display = ("id","service_section","service_type","organization")
+    list_display = ("id","organization","service_section","service_type",'created_by')
     list_filter = ("id","service_section","service_type","organization")
     search_fields = ("id","service_section","service_type","organization")
     readonly_fields =  ("created_date",)
@@ -59,7 +59,7 @@ class OrganizationServiceAdmin(admin.ModelAdmin):
 
 @admin.register(OrganizationEmployee)
 class OrganizationEmployeeAdmin(admin.ModelAdmin):
-    list_display = ("id","name","role","mobile","organization")
+    list_display = ("id","organization","name","role","mobile",'created_by')
     list_filter = ("id","name","role","mobile","organization")
     search_fields = ("id","name","role","mobile","organization")
     readonly_fields =  ("created_date",)

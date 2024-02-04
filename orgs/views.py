@@ -75,7 +75,9 @@ def create_organization_emp(request):
         return Response(auth_status,401)
     serializer = OrganizationEmployeeSerialzer(data = request.data)
     if serializer.is_valid():
-        serializer.save()
+        obj = serializer.save()
+        obj.created_by = auth_status['user']
+        obj.save()
         return Response({'status':'succeed', 'message': 'organization_emp_created_successfully'})
     else:
         return Response({'status':'failed','errors': serializer.errors})
@@ -88,7 +90,9 @@ def create_organization_service(request):
         return Response(auth_status,401)
     serializer = OrganizationServiceSerialzer(data = request.data)
     if serializer.is_valid():
-        serializer.save()
+        obj = serializer.save()
+        obj.created_by = auth_status['user']
+        obj.save()
         print('good')
         return Response({'status':'succeed', 'message': 'organization_service_created_successfully'})
     else:
