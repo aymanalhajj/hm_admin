@@ -19,36 +19,36 @@ JWT_CONF = {
     "TOKEN_LIFETIME_HOURS": 24,
 }
 
-_LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "root": {"level": "INFO", "handlers": ["file"]},
-    "handlers": {
-        "file": {
-            "level": "INFO",
-            "class": "logging.FileHandler",
-            # "filename": "/var/log/django.log",
-            "filename": os.path.join(BASE_DIR, 'django.log'),
-            "formatter": "app",
-        },
-    },
-    "loggers": {
-        "django": {
-            "handlers": ["file"],
-            "level": "INFO",
-            "propagate": True
-        },
-    },
-    "formatters": {
-        "app": {
-            "format": (
-                u"%(asctime)s [%(levelname)-8s] "
-                "(%(module)s.%(funcName)s) %(message)s"
-            ),
-            "datefmt": "%Y-%m-%d %H:%M:%S",
-        },
-    },
-}
+# LOGGING_ING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "root": {"level": "INFO", "handlers": ["file"]},
+#     "handlers": {
+#         "file": {
+#             "level": "INFO",
+#             "class": "logging.FileHandler",
+#             # "filename": "/var/log/django.log",
+#             "filename": os.path.join(BASE_DIR, 'django.log'),
+#             "formatter": "app",
+#         },
+#     },
+#     "loggers": {
+#         "django": {
+#             "handlers": ["file"],
+#             "level": "INFO",
+#             "propagate": True
+#         },
+#     },
+#     "formatters": {
+#         "app": {
+#             "format": (
+#                 u"%(asctime)s [%(levelname)-8s] "
+#                 "(%(module)s.%(funcName)s) %(message)s"
+#             ),
+#             "datefmt": "%Y-%m-%d %H:%M:%S",
+#         },
+#     },
+# }
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
