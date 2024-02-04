@@ -5,6 +5,13 @@ from .models import *
 
 from django.utils.html import format_html
 
+
+@admin.register(OrganizationFile)
+class OrganizationFileAdmin(admin.ModelAdmin):
+    list_display = ('id','organization','file',"description",'created_by','created_at')
+    list_filter = ('id','organization','description','created_by','created_at')
+    search_fields = ("organization","description")
+
 @admin.register(Organization)
 class OrganizationAdmin(admin.ModelAdmin):
     list_display = ("name","org_type","order_status","employee","expected_date","org_employees","org_services")
