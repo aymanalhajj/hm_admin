@@ -54,6 +54,7 @@ class JWTAuthentication():
     def authenticate(self, request):
         # Extract the JWT from the Authorization header
         jwt_token = request.META.get('HTTP_AUTHORIZATION')
+        print("token: "+str(jwt_token))
         if jwt_token is None:
             return {'message':'no token passed','status':'invalid'}
 

@@ -207,6 +207,14 @@ def submit_organization_for_study(request):
         print(auth_status)
         return Response(auth_status,401)
     if("id" in request.headers):
+        emp_count = OrganizationEmployee.objects.filter(organization_id = request.headers["id"]).count()
+        service_count = OrganizationService.objects.filter(organization_id = request.headers["id"]).count()
+        print("service_count"+request.headers["id"])
+        print(str(emp_count))
+        if(emp_count == 0 or service_count == 0):
+            return Response({'status':'failed','message': 'يجب اضافة موظفين للمنشأة وتحديد الخدمات المطلوبة.'})
+        # return Response({'status':'failed','message': str(service_count)+"يجب اضافة موظفين للمنشأة وتحديد الخدمات المطلوبة."+str(emp_count)})
+        
         Organization.objects.filter(id = request.headers["id"]).update(order_stage = 2)
         return Response({'status':'succeed', 'message':'organization_submited_successfully'})
     else:
