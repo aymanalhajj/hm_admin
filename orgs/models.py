@@ -56,6 +56,8 @@ class Organization(models.Model):
                 services += f'<tr style="background-color: #5e9cd3;color:white;"><td>{c.service_section}</td><td>{c.service_type}</td></tr>'
             elif  c.service_section_id ==3:
                 services += f'<tr style="background-color: #db4f4f;color:white;"><td>{c.service_section}</td><td>{c.service_type}</td></tr>'
+            else:
+                services += f'<tr style="background-color: #dba84f;color:white;"><td>{c.service_section}</td><td>{c.service_type}</td></tr>'
         services += '</tbody></table>'
         return format_html(services) 
     org_services.fget.short_description = _('organization services')
